@@ -1,0 +1,59 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+generator erd {
+  provider = "prisma-erd-generator"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id         Int      @id @default(autoincrement())
+  name       String
+  email      String   @unique
+  password   String
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  Pokemons     Pokemon[]
+  Observations Observation[]
+
+  @@map("users")
+}
+
+model Pokemon {
+  id          Int      @id @default(autoincrement())
+  name        String
+  type        String
+  master      User     @relation(fields: [masterId], references: [id])
+  masterId    Int
+  is_favorite Boolean? @default(false)
+  is_seen     Boolean? @default(false)
+  is_caught   Boolean? @default(false)
+
+  created_at  DateTime @default(now())
+  updated_at  DateTime @updatedAt
+
+  Observations Observation[]
+
+  @@map("pokemons")
+}
+
+model Observation {
+  id          Int      @id @default(autoincrement())
+  master      User     @relation(fields: [masterId], references: [id])
+  masterId    Int
+  pokemonId   Int
+  pokemon     Pokemon  @relation(fields: [pokemonId], references: [id])
+  description String
+
+  created_at  DateTime @default(now())
+  updated_at  DateTime @updatedAt
+
+  @@map("observations")
+}
