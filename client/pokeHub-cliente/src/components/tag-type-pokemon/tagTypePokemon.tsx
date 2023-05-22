@@ -1,11 +1,13 @@
-import './tagTypePokemon.js'
+import './tagTypePokemon.css'
 
-export default function TagTypePokemon(){
+const TagTypePokemon: React.FC = () =>{
     return(
-        <div className="tag-type-pokemon">
+        <div className="tag-type_pokemon">
             <p>
                 Psychic
             </p>
         </div>
     );
 }
+
+export default TagTypePokemon;

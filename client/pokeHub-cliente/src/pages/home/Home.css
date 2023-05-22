@@ -1,0 +1,29 @@
+.home section{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin: 0rem 0rem 1.5rem 0rem;
+}
+.new_Pokemon .title,
+.category_Pokemon .title,
+.last-add_Pokemon .title,
+.favorites_Pokemon .title{
+    width: 100%;
+    text-align: left;
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin: 0rem 0rem 0.85rem 0rem;
+}
+.add-Pokemon{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    bottom: 0;
+    right: 0;
+    padding: 5.5em 0.5em;
+    position: fixed;
+}

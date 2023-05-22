@@ -1,0 +1,14 @@
+
+
+
+.add-Pokemon{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    bottom: 0;
+    right: 0;
+    padding: 5.5em 0.5em;
+    position: fixed;
+}

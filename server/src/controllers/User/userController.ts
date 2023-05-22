@@ -37,7 +37,7 @@ export const getAllUsersController = async (req: Request, res: Response) => {
 
         if(users){
             res.status(200).json({
-                message: "Usuários encontrados com sucesso!",
+                // message: "Usuários encontrados com sucesso!",
                 data: users
             })
         }else{
