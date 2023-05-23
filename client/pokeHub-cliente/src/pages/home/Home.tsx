@@ -20,54 +20,52 @@ export default function Home() {
     return (
        <main className='home'>
            <ContainerGlobal>
-             <section className='new_Pokemon'>
-                <h1 className='new_Pokemon title'>
-                  Novidades
-               </h1>
-               <Carousel settingsResponsive={{
-                  0: { items: 2.5 },
-                  768: { items: 4 },
-                  1024: { items: 8}
-                }}>
-                  <CardNewPokemon/>
-                  <CardNewPokemon/>
-                  <CardNewPokemon/>
-                  <CardNewPokemon/>
-                  <CardNewPokemon/>
-               </Carousel>
-             </section>
-             <section className='category_Pokemon'>
+               <section className='new_Pokemon'>
+                  <h1 className='new_Pokemon title'>
+                     Novidades
+                  </h1>
                   <Carousel settingsResponsive={{
-                     0: { items: 4 },
-                     768: { items: 6 },
-                     1024: { items: 10}
+                     0: { items: 2.5 },
+                     1024: { items: 8}
                   }}>
-                  <CategoryHome image={imageCategoryFantasma} name='Fantasma'/>
-                  <CategoryHome image={imageCategoryFogo} name='Fogo'/>
-                  <CategoryHome image={imageCategoryAgua} name='Água'/>
-                  <CategoryHome image={imageCategoryPsiquico} name='Psiquico'/>
-                  <CategoryHome image={imageCategoryNormal} name='Normal'/>
-                  <CategoryHome image={imageCategoryInseto} name='Inseto'/>
-                  <CategoryHome image={imageCategoryEletrico} name='Elétrico'/>
-                  <ButtonAddPokemon svgIcon={
-                     <svg width="40" height="40" fill="none" stroke="#f5f5f5" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path d="m8 4 8 8-8 8"></path>
-                     </svg>
-                  }/>               
-                </Carousel>
-             </section>
-             <section className='last-add_Pokemon'>
-                <h1 className='last-add_Pokemon title'>
-                  Ultimos adicionados
-               </h1>
-                <CardLastAddPokemon/>
-             </section>
-             <section className='favorites_Pokemon'>
-                <h1 className='favorites_Pokemon title'>
-                  Seus favoritos
-               </h1>
-                <CardFavoritePokemon/>
-             </section>
+                     <CardNewPokemon/>
+                     <CardNewPokemon/>
+                     <CardNewPokemon/>
+                     <CardNewPokemon/>
+                     <CardNewPokemon/>
+                  </Carousel>
+               </section>
+               <section className='category_Pokemon'>
+                  <Carousel settingsResponsive={{
+                        0: { items: 4 },
+                        1024: { items: 10}
+                  }}>
+                     <CategoryHome image={imageCategoryFantasma} name='Fantasma'/>
+                     <CategoryHome image={imageCategoryFogo} name='Fogo'/>
+                     <CategoryHome image={imageCategoryAgua} name='Água'/>
+                     <CategoryHome image={imageCategoryPsiquico} name='Psiquico'/>
+                     <CategoryHome image={imageCategoryNormal} name='Normal'/>
+                     <CategoryHome image={imageCategoryInseto} name='Inseto'/>
+                     <CategoryHome image={imageCategoryEletrico} name='Elétrico'/>
+                     <ButtonAddPokemon svgIcon={
+                        <svg width="40" height="40" fill="none" stroke="#f5f5f5" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                           <path d="m8 4 8 8-8 8"></path>
+                        </svg>
+                     }/>               
+                  </Carousel>
+               </section>
+               <section className='last-add_Pokemon'>
+                  <h1 className='last-add_Pokemon title'>
+                     Ultimos adicionados
+                  </h1>
+                  <CardLastAddPokemon/>
+               </section>
+               <section className='favorites_Pokemon'>
+                  <h1 className='favorites_Pokemon title'>
+                     Seus favoritos
+                  </h1>
+                  <CardFavoritePokemon/>
+               </section>
            </ContainerGlobal>
            <span className='add-Pokemon'>
                <ButtonAddPokemon svgIcon={

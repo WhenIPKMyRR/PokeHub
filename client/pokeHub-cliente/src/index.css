@@ -62,6 +62,9 @@ button{
   /* usada para cor de fundo de conponentes (inputs, caixa de texto etc... */
   --component_background: #c7c7c7c8;
 
+  /* usada para cor de texto de conponentes (inputs, caixa de texto etc... */
+  --text-component: #a3a3a3;
+
   /* usada para cor de texto */
   --text: #1c1c1e;
 

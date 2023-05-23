@@ -8,6 +8,9 @@ export const StyledNav = styled.nav`
     width: 100%;
     height: 75px;
     z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 `;
 
 export const NavUl = styled.ul`
@@ -16,6 +19,7 @@ export const NavUl = styled.ul`
     align-items: center;
     width: 100%;
     height: 100%;
+    max-width: 520px
 `;
 
 export const NavLi = styled.li`

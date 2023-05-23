@@ -36,7 +36,7 @@ const CardFavoritePokemon: React.FC = () =>{
                         </div>
                         <div className='cardFavoritePokemon-image'>
                             <div className='cardFavoritePokemon-image_container'>
-                                <img src='https://assets.pokemon.com/assets/cms2/img/pokedex/full/484.png' alt='Palkia'/>
+                                <img src='https://assets.pokemon.com/assets/cms2/img/pokedex/full/008.png' alt='Palkia'/>
                             </div>
                         </div>
                     </div>
