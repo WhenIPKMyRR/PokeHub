@@ -1,0 +1,94 @@
+.userData-perfil{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: auto;
+    padding: 1rem 0rem;
+    margin: 1rem 0rem 0rem 0rem;
+}
+.userData-perfil img{
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    margin: 0 1rem 1rem 0rem;
+}
+.userData-perfil h1{
+    font-size: 1.2rem;
+    margin: 0;
+    font-weight: 500;
+}
+.userData-config{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    height: auto;
+    margin: 0rem 0rem 0rem 0rem;
+    padding: 0;
+}
+.userData-config a{
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0rem 0rem 0rem 0rem;
+}
+.userData-config_account,
+.userData-config_app{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 95%;
+    height: auto;
+    padding: 0.5rem 0rem;
+    margin: 0rem 0rem 0rem 0rem;
+}
+.userData-config_account h2,
+.userData-config_app h2{
+    width: 100%;
+    height: auto;
+    font-size: 0.95rem;
+    margin: 0;
+    font-weight: 500;
+}
+.userData-config_account .container-info,
+.userData-config_app .container-info{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: auto;
+    padding: 0.7rem 0rem;
+    margin: 0rem 0rem 0rem 0rem;
+}
+.userData-config_account .container-info .info, 
+.userData-config_app .container-info .info{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 100%;
+    height: auto;
+    padding: 0rem 0rem;
+    margin: 0em 0em 0em 0.7em;
+}
+.userData-config_account .container-info .info p,
+.userData-config_app .container-info .info p{
+    font-size: 0.85em;
+    margin: 0;
+    font-weight: 500;
+    color: var(--text-secundary);
+    width: 90%;
+}
+.userData-config_account .container-info .info strong,
+.userData-config_app .container-info .info strong{
+    font-size: 1em;
+    margin: 0em 0em 0.1em 0em;
+    font-weight: 600;
+}
