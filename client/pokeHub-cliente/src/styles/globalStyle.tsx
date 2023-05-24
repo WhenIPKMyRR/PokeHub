@@ -8,7 +8,7 @@ export const GlobalStyle = createGlobalStyle`
 `;
 
 export const ContainerGlobal = styled.div`
-  width: 90%;
+  width: 85%;
   height: 100%;
   display: flex;
   flex-direction: column;
