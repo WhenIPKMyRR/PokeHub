@@ -1,6 +1,12 @@
-
-
-
+.favorites-pokemons{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(155px, 1fr));
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    margin: 1rem 0rem 0rem 0rem;
+}
 .add-Pokemon{
     display: flex;
     justify-content: flex-end;

@@ -1,49 +1,43 @@
-import React,{useState, useEffect} from 'react'
-import axios from 'axios'
-import GenericButton from '../generic-button/genericButton';
+import TagTypePokemon from '../tag-type-pokemon/tagTypePokemon';
 import './cardFavoritePokemon.css'
+import { Link } from 'react-router-dom';
 
-interface Pokemon{
+interface ICardFavoritePokemonProps {
+    linkTo: string;
+    backgroundColor: string;
+    image: string;
     name: string;
+    id: number;
 }
 
-const CardFavoritePokemon: React.FC = () =>{
-    const [ pokemons, setPokemons] = useState<Pokemon[]>([])
+const CardFavoritePokemon: React.FC<ICardFavoritePokemonProps> = (props) => {
 
-    useEffect(() => {
-        axios.get('http://localhost:3003/pokemon/all')
-        .then((response) =>{
-            setPokemons(response.data.data)
-        })
-        .catch((error) =>{
-            console.log(error)
-        })
-    }, [])
+    return (
+        <Link to={props.linkTo}>
+            <div className="cardFavoritePokemon-container"
+                style={{ backgroundColor: props.backgroundColor }}
+            >
+                <div className="cardFavoritePokemon-header">
+                    <span>
+                        <TagTypePokemon />
+                        <TagTypePokemon />
 
-    return(
-        <>
-            {pokemons.map(pokemon => {
-                return(
-                    <div className='cardFavoritePokemon-container' key={pokemon.name}>
-                        <div className='cardFavoritePokemon-text'>
-                            <h1>
-                                {pokemon.name}
-                            </h1>
-                            <p>
-                                Diz-se que o tempo arrancou quando Dialga nasceu trazendo assim a realidade como nos conhecemos...
-                            </p>
-                        <GenericButton text={"Conferir"} width={"127px"} height={"35px"} margin={"0em 0em 1em 0em"}/>
-                        </div>
-                        <div className='cardFavoritePokemon-image'>
-                            <div className='cardFavoritePokemon-image_container'>
-                                <img src='https://assets.pokemon.com/assets/cms2/img/pokedex/full/008.png' alt='Palkia'/>
-                            </div>
-                        </div>
-                    </div>
-                )
-            })}
-        </>
-    )
+                    </span>
+                    <p className='cardFavoritePokemon-header_id'>
+                        {props.id}
+                    </p>
+                </div>
+                <div className="cardFavoritePokemon-image">
+                    <img src={props.image} alt={props.name} />
+                </div>
+                <div className="cardFavoritePokemon-text">
+                    <h1 className='cardFavoritePokemon-text_name'>
+                        {props.name}
+                    </h1>
+                </div>
+            </div>
+        </Link>
+    );
 }
 
-export default CardFavoritePokemon;
+export default CardFavoritePokemon

@@ -4,7 +4,7 @@ const TagTypePokemon: React.FC = () =>{
     return(
         <div className="tag-type_pokemon">
             <p>
-                Psychic
+                Eletric
             </p>
         </div>
     );

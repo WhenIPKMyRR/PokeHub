@@ -1,4 +1,4 @@
-import CardFavoritePokemon from '../../components/card-favorite-pokemon/cardFavoritePokemon';
+import CardFavoritePokemon from '../../components/card-favorite-pokemon-home/cardFavoritePokemonHome';
 import CardLastAddPokemon from '../../components/card-last-add-pokemon/cardLastAddPokemon';
 import CardNewPokemon from '../../components/card-new-pokemon/cardNewPokemon';
 import Carousel from '../../components/carousel/carousel';
@@ -14,6 +14,7 @@ import imageCategoryNormal from '../../assets/images/normal-image-category-pokem
 import imageCategoryInseto from '../../assets/images/inseto-image-category-pokemon.png'
 import imageCategoryEletrico from '../../assets/images/eletrico-image-category-pokemon.png'
 import ButtonAddPokemon from '../../components/button-add-pokemon/buttonAddPokemon';
+import CardFavoritePokemonHome from '../../components/card-favorite-pokemon-home/cardFavoritePokemonHome';
 
 
 export default function Home() {
@@ -64,7 +65,7 @@ export default function Home() {
                   <h1 className='favorites_Pokemon title'>
                      Seus favoritos
                   </h1>
-                  <CardFavoritePokemon/>
+                  <CardFavoritePokemonHome/>
                </section>
            </ContainerGlobal>
            <span className='add-Pokemon'>
