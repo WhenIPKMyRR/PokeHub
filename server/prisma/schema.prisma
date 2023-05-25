@@ -12,48 +12,80 @@ datasource db {
 }
 
 model User {
-  id         Int      @id @default(autoincrement())
-  name       String
-  email      String   @unique
-  password   String
+  id       Int    @id @default(autoincrement())
+  name     String
+  email    String @unique
+  password String
+  token    String
 
-  created_at DateTime @default(now())
-  updated_at DateTime @updatedAt
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
-  Pokemons     Pokemon[]
-  Observations Observation[]
-
-  @@map("users")
+  favorites    Favorites[]
+  observations ObservationPokemon[]
+  pokemons     Pokemon[]
 }
 
 model Pokemon {
-  id          Int      @id @default(autoincrement())
-  name        String
-  type        String
-  master      User     @relation(fields: [masterId], references: [id])
-  masterId    Int
-  is_favorite Boolean? @default(false)
-  is_seen     Boolean? @default(false)
-  is_caught   Boolean? @default(false)
+  id             Int    @id @default(autoincrement())
+  name           String
+  type           String
+  image          String
+  description    String
+  height         String
+  weight         String
+  baseExperience Int
+  userId         Int
 
-  created_at  DateTime @default(now())
-  updated_at  DateTime @updatedAt
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
-  Observations Observation[]
+  favorites    Favorites[]
+  observations ObservationPokemon[]
+  user         User                 @relation(fields: [userId], references: [id])
+
+  types Type[]
 
   @@map("pokemons")
 }
 
-model Observation {
-  id          Int      @id @default(autoincrement())
-  master      User     @relation(fields: [masterId], references: [id])
-  masterId    Int
-  pokemonId   Int
-  pokemon     Pokemon  @relation(fields: [pokemonId], references: [id])
+model Type {
+  id   Int    @id @default(autoincrement())
+  name String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  pokemons Pokemon[]
+
+  @@map("types_pokemons")
+}
+
+model Favorites {
+  id        Int @id @default(autoincrement())
+  userId    Int
+  pokemonId Int
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user    User    @relation(fields: [userId], references: [id])
+  pokemon Pokemon @relation(fields: [pokemonId], references: [id])
+
+  @@map("favorites_pokemons")
+}
+
+model ObservationPokemon {
+  id          Int    @id @default(autoincrement())
   description String
+  userId      Int
+  pokemonId   Int
 
-  created_at  DateTime @default(now())
-  updated_at  DateTime @updatedAt
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
-  @@map("observations")
+  user    User    @relation(fields: [userId], references: [id])
+  pokemon Pokemon @relation(fields: [pokemonId], references: [id])
+
+  @@map("observations_pokemons")
 }

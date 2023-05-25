@@ -14,7 +14,7 @@ const Routies = () => {
       <Route path="/search" element={<Search />} />
       <Route path="/favorites" element={<Favorites />} />
       <Route path="/user" element={<User />} />
-      <Route path="/caughts/*" element={<Caughts />} />
+      {/* <Route path="/caughts/*" element={<Caughts />} /> */}
       <Route path="/pokemon/*" element={<Pokemon/>}/>
     </Routes>
 

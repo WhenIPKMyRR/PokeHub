@@ -1,19 +1,34 @@
+import ReactLoading from "react-loading";
 import ButtonAddPokemon from "../../components/button-add-pokemon/buttonAddPokemon";
 import CardFavoritePokemon from "../../components/card-favorite-pokemon/cardFavoritePokemon";
 import { ContainerGlobal } from "../../styles/globalStyle";
+import { usePokemonData }  from "../../utils/usePokemonData";
 import './favorites.css'
+import { Link } from "react-router-dom";
 
 const Favorites =() =>{
+
+    const{ pokemons, isLoadingPokemons } = usePokemonData()
+
     return(
         <main>
             <ContainerGlobal>
                 <div className="favorites-pokemons">
-                    <CardFavoritePokemon linkTo="/" backgroundColor="#D35400" id={10} name="Golem" image="https://assets.pokemon.com/assets/cms2/img/pokedex/full/076.png"/>
-                    <CardFavoritePokemon linkTo="/" backgroundColor="#D5DBDB" id={24} name="Registeel" image="https://assets.pokemon.com/assets/cms2/img/pokedex/full/379.png"/>
-                    <CardFavoritePokemon linkTo="/" backgroundColor="#A2D9DA" id={89} name="Regice" image="https://assets.pokemon.com/assets/cms2/img/pokedex/full/378.png"/>
-                    <CardFavoritePokemon linkTo="/" backgroundColor="#FFC300" id={47} name="Toxtricity " image="https://assets.pokemon.com/assets/cms2/img/pokedex/full/849.png"/>
-                    <CardFavoritePokemon linkTo="/" backgroundColor="#F1948A" id={1} name="Mewtwo " image="https://assets.pokemon.com/assets/cms2/img/pokedex/full/150.png"/>
-                    <CardFavoritePokemon linkTo="/" backgroundColor="#5DADE2" id={5} name="Vaporeon " image="https://assets.pokemon.com/assets/cms2/img/pokedex/full/134.png"/>
+                    <>
+                        {
+                            isLoadingPokemons && 
+                            <span>
+                                <ReactLoading/>
+                            </span>
+                        }
+                        {pokemons?.map(pokemon =>{
+                            return(
+                                <Link to={`/pokemon/${pokemon.id}`}>
+                                    <CardFavoritePokemon name={pokemon.name} id={pokemon.id} type={pokemon.type}/>
+                                </Link>
+                            )
+                        })}
+                    </>
                 </div>
             </ContainerGlobal>
             <span className='add-Pokemon'>
@@ -31,3 +46,5 @@ const Favorites =() =>{
 }
 
 export default Favorites;
+
+

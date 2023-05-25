@@ -1,42 +1,41 @@
+import { IPokemonData } from '../../interfaces/IPokemonData';
 import TagTypePokemon from '../tag-type-pokemon/tagTypePokemon';
 import './cardFavoritePokemon.css'
 import { Link } from 'react-router-dom';
 
-interface ICardFavoritePokemonProps {
-    linkTo: string;
-    backgroundColor: string;
-    image: string;
-    name: string;
-    id: number;
-}
+// interface ICardFavoritePokemonProps {
+//     linkTo: string;
+//     backgroundColor: string;
+//     image: string;
+//     name: string;
+//     id: number;
+// }
 
-const CardFavoritePokemon: React.FC<ICardFavoritePokemonProps> = (props) => {
+const CardFavoritePokemon: React.FC<IPokemonData> = ({ id, name, type}) => {
 
     return (
-        <Link to={props.linkTo}>
-            <div className="cardFavoritePokemon-container"
-                style={{ backgroundColor: props.backgroundColor }}
-            >
-                <div className="cardFavoritePokemon-header">
-                    <span>
-                        <TagTypePokemon />
-                        <TagTypePokemon />
+        <div className="cardFavoritePokemon-container"
+            style={{ backgroundColor:"#c1c158" }}
+        >
+            <div className="cardFavoritePokemon-header">
+                <span>
+                    <TagTypePokemon type={type} />
+                    <TagTypePokemon type={type}/>
 
-                    </span>
-                    <p className='cardFavoritePokemon-header_id'>
-                        {props.id}
-                    </p>
-                </div>
-                <div className="cardFavoritePokemon-image">
-                    <img src={props.image} alt={props.name} />
-                </div>
-                <div className="cardFavoritePokemon-text">
-                    <h1 className='cardFavoritePokemon-text_name'>
-                        {props.name}
-                    </h1>
-                </div>
+                </span>
+                <p className='cardFavoritePokemon-header_id'>
+                    {id}
+                </p>
             </div>
-        </Link>
+            <div className="cardFavoritePokemon-image">
+                <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/076.png" alt="{props.name}" />
+            </div>
+            <div className="cardFavoritePokemon-text">
+                <h1 className='cardFavoritePokemon-text_name'>
+                    {name}
+                </h1>
+            </div>
+        </div>
     );
 }
 

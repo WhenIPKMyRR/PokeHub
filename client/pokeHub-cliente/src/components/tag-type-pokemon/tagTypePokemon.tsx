@@ -1,10 +1,14 @@
 import './tagTypePokemon.css'
 
-const TagTypePokemon: React.FC = () =>{
+interface ITagTypePokemonProps{
+    type: string;
+}
+
+const TagTypePokemon: React.FC<ITagTypePokemonProps> = (props) =>{
     return(
         <div className="tag-type_pokemon">
             <p>
-                Eletric
+                {props.type}
             </p>
         </div>
     );

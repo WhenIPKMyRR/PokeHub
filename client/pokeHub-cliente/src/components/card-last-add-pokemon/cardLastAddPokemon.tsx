@@ -32,7 +32,7 @@ const CardLastAddPokemon: React.FC = () =>{
                     <div className='cardLastAddPokemon-container' key={pokemon.name}>
                         <div className='cardLastAddPokemon-text'>
                             <h1>
-                            {pokemon.name}
+                                {pokemon.name}
                             </h1>
                             <p>
                                 Mistura entre armadura de guerra e um crustacio
