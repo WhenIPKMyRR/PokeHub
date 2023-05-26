@@ -8,11 +8,18 @@ export async function createPokemon(pokemonData: Pokemon) {
     const validatedPokemon = pokemonSchema.parse(pokemonData);
 
     const createdPokemon = await prisma.pokemon.create({
+
       data: {
         name: validatedPokemon.name,
         type: validatedPokemon.type,
-        masterId: validatedPokemon.masterId,
+        image: validatedPokemon.image,
+        description: validatedPokemon.description,
+        height: validatedPokemon.height,
+        weight: validatedPokemon.weight,
+        baseExperience: validatedPokemon.baseExperience,
+        userId: validatedPokemon.userId,
       },
+      
     });
 
     return createdPokemon;

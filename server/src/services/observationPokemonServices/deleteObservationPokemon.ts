@@ -1,10 +1,10 @@
-import { PrismaClient, Observation } from "@prisma/client";
+import { PrismaClient, ObservationPokemon } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
 export async function deleteObservation(id: number) {
   try {
-    const deletedObservation = await prisma.observation.delete({
+    const deletedObservation = await prisma.observationPokemon.delete({
         where: {
             id: id
         }

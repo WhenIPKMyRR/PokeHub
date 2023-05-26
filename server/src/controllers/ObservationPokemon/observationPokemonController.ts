@@ -1,7 +1,7 @@
-import { createObservation, getAllObservation, getByIdObservation, updateObservation, deleteObservation } from "../../services/observationServices";
+import { createObservation,getAllObservation, getByIdObservation,getObservationsPokemonByPokemon, updateObservation, deleteObservation} from "../../services/observationPokemonServices";
 import { Request, Response } from "express";
 
-export const createObservationController = async (req: Request, res: Response) => {
+export const createObservationPokemonController = async (req: Request, res: Response) => {
     try {
         const observationData = req.body;
 
@@ -31,7 +31,7 @@ export const createObservationController = async (req: Request, res: Response) =
     }
 }
 
-export const getAllObservationController = async (req: Request, res: Response) => {
+export const getAllObservationsPokemonsController = async (req: Request, res: Response) => {
     try {
         const observations = await getAllObservation()
 
@@ -53,7 +53,7 @@ export const getAllObservationController = async (req: Request, res: Response) =
     }
 }
 
-export const getByIdObservationController = async (req: Request, res: Response) => {
+export const getByIdObservationPokemonController = async (req: Request, res: Response) => {
     try {
         const { id } = req.params;
 
@@ -86,7 +86,40 @@ export const getByIdObservationController = async (req: Request, res: Response) 
     }
 }
 
-export const updateObservationController = async (req: Request, res: Response) => {
+export const getObservationsPokemonByPokemonController = async (req: Request, res: Response) =>{
+    try {
+        const { id } = req.params;
+
+        const pokemonId = parseInt(id); 
+
+        if (isNaN(pokemonId)) {
+            res.status(400).json({
+                message: "ID inválido! O ID deve ser um número.",
+            });
+            return;
+        }
+
+        const observations = await getObservationsPokemonByPokemon(pokemonId)
+
+        if(observations){
+            res.status(200).json({
+                message: "Observations encontrados com sucesso!",
+                data: observations 
+            })
+        }else{
+            res.status(404).json({
+                message: "Nenhum observation encontrado!",
+            })
+        }
+    }catch(error){
+        res.status(500).json({
+            message: "Erro interno do servidor!",
+            error
+        })
+    }
+}
+
+export const updateObservationPokemonController = async (req: Request, res: Response) => {
     try {
         const { id } = req.params;
 
@@ -121,7 +154,7 @@ export const updateObservationController = async (req: Request, res: Response) =
     }
 }
 
-export const deleteObservationController = async (req: Request, res: Response) => {
+export const deleteObservationPokemonController = async (req: Request, res: Response) => {
     try {
         const { id } = req.params;
 

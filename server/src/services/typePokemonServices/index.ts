@@ -1,0 +1,6 @@
+export * from './createTypePokemon'
+export * from './deleteTypePokemon'
+export * from './getAllTypesPokemons'
+export * from './getByIdTypePokemon'
+export * from './getTypesPokemonsByPokemon'
+export * from './updateTypePokemon'

@@ -15,6 +15,7 @@ export async function updateUser(userId: number, userData: User) {
             name: validatedUser.name,
             email: validatedUser.email,
             password: validatedUser.password,
+            token: validatedUser.token
         }
     })
 

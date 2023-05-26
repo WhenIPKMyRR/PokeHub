@@ -21,9 +21,11 @@ model User {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  favorites    Favorites[]
+  favorites    FavoritePokemon[]
   observations ObservationPokemon[]
   pokemons     Pokemon[]
+
+  @@map("users")
 }
 
 model Pokemon {
@@ -40,28 +42,30 @@ model Pokemon {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  favorites    Favorites[]
+  favorites    FavoritePokemon[]
   observations ObservationPokemon[]
   user         User                 @relation(fields: [userId], references: [id])
 
-  types Type[]
+  types TypePokemon[]
 
   @@map("pokemons")
 }
 
-model Type {
-  id   Int    @id @default(autoincrement())
-  name String
+model TypePokemon {
+  id    Int    @id @default(autoincrement())
+  name  String
+  color String
+  
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
   pokemons Pokemon[]
 
-  @@map("types_pokemons")
+  @@map("typesPokemons")
 }
 
-model Favorites {
+model FavoritePokemon {
   id        Int @id @default(autoincrement())
   userId    Int
   pokemonId Int
@@ -72,7 +76,7 @@ model Favorites {
   user    User    @relation(fields: [userId], references: [id])
   pokemon Pokemon @relation(fields: [pokemonId], references: [id])
 
-  @@map("favorites_pokemons")
+  @@map("favoritesPokemons")
 }
 
 model ObservationPokemon {
@@ -87,5 +91,5 @@ model ObservationPokemon {
   user    User    @relation(fields: [userId], references: [id])
   pokemon Pokemon @relation(fields: [pokemonId], references: [id])
 
-  @@map("observations_pokemons")
+  @@map("observationsPokemons")
 }
