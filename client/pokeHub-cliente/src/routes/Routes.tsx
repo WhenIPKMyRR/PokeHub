@@ -5,17 +5,46 @@ import Search from '../pages/search/search';
 import User from '../pages/user/user';
 import Caughts from '../pages/caughts/caughts';
 import Pokemon from '../pages/pokemon/pokemon';
+import Login from '../pages/login/login';
+import ProtectedLayout from '../components/protected-layout/protectedLayout';
 
 const Routies = () => {
 
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/search" element={<Search />} />
-      <Route path="/favorites" element={<Favorites />} />
-      <Route path="/user" element={<User />} />
-      {/* <Route path="/caughts/*" element={<Caughts />} /> */}
-      <Route path="/pokemon/*" element={<Pokemon/>}/>
+      <Route path="/" element={
+        <ProtectedLayout>
+          <Home />
+        </ProtectedLayout>
+      }/>
+      <Route path="/search" element={
+        <ProtectedLayout>
+          <Search />
+        </ProtectedLayout>
+      }/>
+      <Route path="/favorites" element={
+        <ProtectedLayout>
+          <Favorites />
+        </ProtectedLayout>  
+      }/>
+      <Route path="/user" element={
+        <ProtectedLayout>
+          <User/>
+        </ProtectedLayout>
+      }/>
+      <Route path="/caughts/*" element={
+        <ProtectedLayout>
+          <Caughts/>
+        </ProtectedLayout>
+      }/>
+      <Route path="/pokemon/*" element={
+        <ProtectedLayout>
+          <Pokemon/>
+        </ProtectedLayout>
+      }/>
+      <Route path="/signIn" element={
+        <Login/>
+      }/>
     </Routes>
 
   );

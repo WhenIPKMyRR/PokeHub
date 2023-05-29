@@ -3,7 +3,7 @@ import { useParams } from "react-router";
 import { IPokemonData } from "../interfaces/IPokemonData";
 import axios from "axios";
 
-const API_URL = "http://localhost:3003/pokemon/";
+const API_URL = "http://localhost:3003/pokemons/";
 
 export const PokemonToGetData = () => {
 

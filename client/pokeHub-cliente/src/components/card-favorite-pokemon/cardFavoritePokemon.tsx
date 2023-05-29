@@ -1,17 +1,12 @@
+import { IFavoritePokemonData } from '../../interfaces/IFavoritePokemonData';
 import { IPokemonData } from '../../interfaces/IPokemonData';
 import TagTypePokemon from '../tag-type-pokemon/tagTypePokemon';
 import './cardFavoritePokemon.css'
 import { Link } from 'react-router-dom';
 
-// interface ICardFavoritePokemonProps {
-//     linkTo: string;
-//     backgroundColor: string;
-//     image: string;
-//     name: string;
-//     id: number;
-// }
 
-const CardFavoritePokemon: React.FC<IPokemonData> = ({ id, name, type}) => {
+
+const CardFavoritePokemon: React.FC<IFavoritePokemonData> = ({ userId, pokemonName, pokemonImage, pokemonType}) => {
 
     return (
         <div className="cardFavoritePokemon-container"
@@ -19,20 +14,20 @@ const CardFavoritePokemon: React.FC<IPokemonData> = ({ id, name, type}) => {
         >
             <div className="cardFavoritePokemon-header">
                 <span>
-                    <TagTypePokemon type={type} />
-                    <TagTypePokemon type={type}/>
+                    <TagTypePokemon type={pokemonType} />
+                    <TagTypePokemon type={pokemonType}/>
 
                 </span>
                 <p className='cardFavoritePokemon-header_id'>
-                    {id}
+                    {userId}
                 </p>
             </div>
             <div className="cardFavoritePokemon-image">
-                <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/076.png" alt="{props.name}" />
+                <img src={pokemonImage} alt="{props.name}" />
             </div>
             <div className="cardFavoritePokemon-text">
                 <h1 className='cardFavoritePokemon-text_name'>
-                    {name}
+                    {pokemonName}
                 </h1>
             </div>
         </div>

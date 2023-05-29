@@ -7,6 +7,8 @@ import Routies from "./routes/Routes";
 import { GlobalStyle } from "./styles/globalStyle";
 import Header from "./components/header/header";
 import Nav from "./components/nav/nav";
+import { AuthProvider } from "./context/authProvider/authProvider";
+import { useAuth } from "./utils/useAuth";
 
 
 export const ThemeContext = createContext({
@@ -16,6 +18,8 @@ export const ThemeContext = createContext({
 
 
 const App = () =>{
+  
+  const { user } = useAuth()
   const [theme, setTheme] = useContinuousState<DefaultTheme>('theme', lightTheme)
 
   const toggleTheme = () =>{
@@ -23,14 +27,16 @@ const App = () =>{
   }
   
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme }}>
-      <ThemeProvider theme={theme}>
-        <GlobalStyle/>
-        <Header/>
-        <Routies/>
-        <Nav/>
-      </ThemeProvider>
-    </ThemeContext.Provider>
+    <AuthProvider>
+      <ThemeContext.Provider value={{ theme, toggleTheme }}>
+        <ThemeProvider theme={theme}>
+          <GlobalStyle/>
+          <Header/>
+          <Routies/>
+          { user && <Nav/>}
+        </ThemeProvider>
+      </ThemeContext.Provider>
+    </AuthProvider>
   );
 }
 

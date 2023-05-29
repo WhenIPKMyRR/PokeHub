@@ -5,10 +5,11 @@ import { ContainerGlobal } from "../../styles/globalStyle";
 import { usePokemonData }  from "../../utils/usePokemonData";
 import './favorites.css'
 import { Link } from "react-router-dom";
+import { useFavoritePokemonData } from "../../utils/useFavoritePokemonData";
 
 const Favorites =() =>{
 
-    const{ pokemons, isLoadingPokemons } = usePokemonData()
+    const{ favoritesPokemons, isLoadingFavorites } = useFavoritePokemonData()
 
     return(
         <main>
@@ -16,15 +17,15 @@ const Favorites =() =>{
                 <div className="favorites-pokemons">
                     <>
                         {
-                            isLoadingPokemons && 
+                            isLoadingFavorites && 
                             <span>
-                                <ReactLoading/>
+                                <ReactLoading type="bars" color="#DD655E" height={50} width={50} />
                             </span>
                         }
-                        {pokemons?.map(pokemon =>{
+                        {favoritesPokemons?.map(favorite =>{
                             return(
-                                <Link to={`/pokemon/${pokemon.id}`}>
-                                    <CardFavoritePokemon name={pokemon.name} id={pokemon.id} type={pokemon.type}/>
+                                <Link to={`/pokemon/${favorite.id}`}>
+                                    <CardFavoritePokemon pokemonName={favorite.pokemonName } userId={favorite.userId} pokemonType={favorite.pokemonType} pokemonImage={favorite.pokemonImage}/>
                                 </Link>
                             )
                         })}

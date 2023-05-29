@@ -1,4 +1,4 @@
-import { createUser, getAllUsers, getByIdUser, updateUser, deleteUser  } from "../../services/userServices";
+import { createUser, getAllUsers, getByIdUser, getUserToLogin, updateUser, deleteUser  } from "../../services/userServices";
 import { Request, Response } from "express";
 
 export const createUserController = async (req: Request, res: Response) => {
@@ -78,6 +78,38 @@ export const getByIdUserController = async (req: Request, res: Response) => {
                 message: "Usuário não encontrado!",
             });
         }
+    } catch(error){
+        res.status(500).json({
+            message: "Erro interno do servidor!",
+            error
+        });
+    }
+}
+
+export const getUserToLoginController = async (req: Request, res: Response) => {
+
+    try {
+        const userData = req.body;
+        const { email, password } = userData;
+        
+        if (!email || !password) {
+            return res.status(400).json({
+                message: "Todos os campos devem ser preenchidos!"
+            });
+        }
+
+        const user = await getUserToLogin(userData)
+        if(user){
+            res.status(200).json({
+                message: "Usuário encontrado com sucesso!",
+                data: user
+            });
+        }else{
+            res.status(404).json({
+                message: "Usuário não encontrado!",
+            });
+        }
+        
     } catch(error){
         res.status(500).json({
             message: "Erro interno do servidor!",

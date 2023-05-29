@@ -4,7 +4,6 @@ const prisma = new PrismaClient();
 
 export async function getByIdObservation(id: number): Promise<ObservationPokemon | null>{
     try {
-
         const observation = await prisma.observationPokemon.findUnique({
           where: {
             id,

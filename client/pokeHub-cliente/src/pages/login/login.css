@@ -1,0 +1,23 @@
+.loginPage{
+    background-color: #c7c7c728;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-end;
+    /* background-image: url('https://assets.pokemon.com/assets/cms2/img/pokedex/full/152.png'); */
+    background-repeat: repeat;
+    background-size: 50%;
+    background-position: top;
+}
+.loginPage-container{
+    background-color: #ffffffd4;
+    width: 100%;
+    height: 80%;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px 20px 0px 0px;
+}

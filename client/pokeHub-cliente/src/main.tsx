@@ -4,6 +4,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { QueryClientProvider } from 'react-query';
 import { queryClient } from './services/queryClient'
 import App from './App'
+// import "antd/dist/antd.css"
 import './index.css'
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
