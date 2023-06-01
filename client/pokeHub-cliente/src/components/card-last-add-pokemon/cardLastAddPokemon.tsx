@@ -1,55 +1,36 @@
-import { useQuery } from 'react-query'
-import axios from 'axios'
-import GenericButton from '../generic-button/genericButton';
-import ReactLoading from 'react-loading';
 import { Link } from 'react-router-dom';
+import GenericButton from '../generic-button/genericButton';
 import './cardLastAddPokemon.css'
 
 
-export type Pokemon = {
+export type ICardLastAddPokemon = {
     name: string;
+    image: string;
+    description: string;
+    rota?: number;
 }
 
-const CardLastAddPokemon: React.FC = () =>{
-
-    const { data, isFetching } = useQuery<Pokemon[]>('all', async ()=>{
-        const response = await axios.get('http://localhost:3003/pokemon/all')
-
-        return response.data.data
-    }, {
-        staleTime: 1000 * 60, // 1 minuto
-    })
+const CardLastAddPokemon: React.FC<ICardLastAddPokemon> = ({ name, image, description, rota }) =>{
 
     return(
-        <>
-            { isFetching && 
-                <span>
-                    <ReactLoading type="bars" color="#DD655E" height={50} width={50} />
-                </span>
-            }
-            {data?.map(pokemon =>{
-                return(
-                    <div className='cardLastAddPokemon-container' key={pokemon.name}>
-                        <div className='cardLastAddPokemon-text'>
-                            <h1>
-                                {pokemon.name}
-                            </h1>
-                            <p>
-                                Mistura entre armadura de guerra e um crustacio
-                            </p>
-                            <Link to={`/caughts/${pokemon.name}`}>
-                                <GenericButton text={"Conferir"} width={"127px"} height={"35px"} margin={"0em 0em 1em 0em"}/>
-                            </Link>
-                        </div>
-                        <div className='cardLastAddPokemon-image'>
-                            <div className='cardLastAddPokemon-image_container'>
-                                <img src='https://assets.pokemon.com/assets/cms2/img/pokedex/full/205.png' alt='Forretress'/>
-                            </div>
-                        </div>
-                    </div>
-                )
-            })}
-        </>
+        <div className='cardLastAddPokemon-container' key={name}>
+            <div className='cardLastAddPokemon-text'>
+                <h1>
+                    {name}
+                </h1>
+                <p>
+                    {description}
+                </p>
+                <Link to={`/pokemon/${rota}`}>
+                    <GenericButton text={"Conferir"} width={"127px"} height={"35px"} margin={"0em 0em 1em 0em"}/>
+                </Link>
+            </div>
+            <div className='cardLastAddPokemon-image'>
+                <div className='cardLastAddPokemon-image_container'>
+                    <img src={image} alt={name}/>
+                </div>
+            </div>
+        </div>
     )
 }
 

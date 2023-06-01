@@ -5,12 +5,9 @@ const prisma = new PrismaClient();
 
 export async function createTypePokemon(typePokemonData: TypePokemon) {
     try {
-        const validateTypePokemon = typePokemonSchema.parse(typePokemonData);
-
         const createdTypePokemon = await prisma.typePokemon.create({
             data: {
-                name: validateTypePokemon.name,
-                color: validateTypePokemon.color
+                name: typePokemonData.name
             },
         });
 

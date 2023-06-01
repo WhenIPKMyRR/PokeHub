@@ -1,43 +1,31 @@
-import { useParams } from "react-router"
 import { ContainerGlobal } from "../../styles/globalStyle"
-import { useQueryClient } from "react-query"
-import { Pokemon } from "../../components/card-last-add-pokemon/cardLastAddPokemon"
+import { usePokemonData } from "../../utils/usePokemonData"
+import CardFavoritePokemon from "../../components/card-favorite-pokemon/cardFavoritePokemon"
+import ReactLoading from "react-loading"
+import { Link } from "react-router-dom"
+
 
 const Caughts = () =>{
 
-    const params = useParams()
-    const currentPokemon = params['*'] as string
+    const { pokemonsPokeHub, isLoadingPokeHub, isError} = usePokemonData()
 
-    const queryClient = useQueryClient()
-
-    const handleChangePokemonName = async () => {
-
-        const previvousPokemons = queryClient.getQueryData<Pokemon[]>('all')
-        
-        if(previvousPokemons){
-            const nextPokemons = previvousPokemons.map(pokemon => {
-                if(pokemon.name === currentPokemon){
-                    return{
-                        ...pokemon,
-                        name: 'Novo nome'
-                    }
-                }else{
-                    return pokemon;
-                }
-            })
-            queryClient.setQueryData('all', nextPokemons)
-        }
-    }
 
     return(
         <main>
             <ContainerGlobal>
-                <h1>
-                    {currentPokemon}
-                </h1>
-                <button onClick={handleChangePokemonName}>
-                    Alterar nome
-                </button>
+                <h1>Caughts</h1>
+                <div>
+                    {isError && <h1>Erro ao carregar os pokemons</h1>}
+                    {isLoadingPokeHub && <ReactLoading
+                      type="spin"
+                      color="#DD655E"
+                    />}
+                    {pokemonsPokeHub?.map(pokemon => (
+                        <Link to={`/pokemon/${pokemon.id}`}>
+                            <CardFavoritePokemon key={pokemon.id} pokemonId={pokemon.id} pokemonImage={pokemon.image} pokemonName={pokemon.name}/>
+                        </Link>
+                    ))}
+                </div>
             </ContainerGlobal>
         </main>
     )

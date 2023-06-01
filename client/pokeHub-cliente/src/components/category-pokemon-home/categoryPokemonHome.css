@@ -12,6 +12,7 @@
 .categoryPokemonHome-container img{
     width: auto;
     height: 80%;
+    filter: drop-shadow(2px 3px 2px #1c1c1e6f);
 }
 .categoryPokemonHome-container p{
     font-size: 14px;

@@ -81,11 +81,9 @@ export const getByIdTypePokemonController = async (req: Request, res: Response) 
 
 export const getTypesPokemonsByPokemonController = async (req: Request, res: Response) => {
     try {
-        const { id } = req.params;
+        const { name } = req.params;
 
-        const pokemonId = parseInt(id);
-
-        const typesPokemons = await getTypesPokemonsByPokemon(pokemonId)
+        const typesPokemons = await getTypesPokemonsByPokemon(name)
 
         if (typesPokemons) {
             res.status(200).json({

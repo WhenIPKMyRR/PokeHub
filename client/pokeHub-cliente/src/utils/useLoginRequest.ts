@@ -1,9 +1,8 @@
-import { Api } from "../services/api"
+import { PokeHubApi } from "../services/api"
 import { IUserData } from "../interfaces/IUserData"
 
 export const setUserLocalStorage = (user: IUserData | null) =>{
     localStorage.setItem('us', JSON.stringify(user))
-    
 }
 
 export const getUserLocalStorage = () =>{
@@ -15,10 +14,10 @@ export const getUserLocalStorage = () =>{
     return null
 }
 
-export const useLoginRequest = async (email: string, password: string) =>{
+export const useLoginRequest = async ( email: string, password: string) =>{
 
     try{
-        const request = await Api.post('login', {email, password})
+        const request = await PokeHubApi.post('login', {email, password})
         return request.data
        
     }catch(error){

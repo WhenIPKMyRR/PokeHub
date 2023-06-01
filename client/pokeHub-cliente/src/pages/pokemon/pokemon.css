@@ -9,11 +9,12 @@
     border-radius: 8px;
     box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
     border: 2px solid #00000050 ;
-    background-image: url('../../assets/images/background-pokemon-page.png');
-    background-size: cover;
+    background-image: url('../../assets/images/background-pokemon-image.png');
+    background-size: 155%;
     background-repeat: no-repeat;
     background-position: center;
     background-color: var(--component_background);
+    background-color: #ffffff;
     margin: 1.7rem 0rem 0.5rem 0rem;
 }
 .pokemonPage-image img{
@@ -21,6 +22,7 @@
     height: auto;
     object-fit: cover;
     border-radius: 8px;
+    filter: drop-shadow(4px 3px 2px #1c1c1ec4);
 }
 .pokemonPage-info{
     width: 100%;
@@ -45,7 +47,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     padding: 0;
 }
 .pokemonPage-info_header .id-pokemon{
@@ -69,6 +71,7 @@
     font-size: 2em;
     font-weight: 700;
     margin-bottom: 0.3em;
+    text-transform: capitalize;
 }
 .pokemonPage-info_text p{
     font-size: 1em;
@@ -119,8 +122,19 @@
     font-weight: 700;
     margin-bottom: 0.3em;
 }
-.pokemonPage-info_comments textarea{
+.pokemonPage-info_comments .formComments{
     width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1em 0em;
+    border: none;
+
+}
+.pokemonPage-info_comments .formComments textarea{
+    width: 94%;
     height: 100%;
     min-height: 100px;
     max-height: 200px;
@@ -128,11 +142,30 @@
     border-radius: 8px;
     font-size: 1em;
     font-weight: 400;
-    margin: 0.8em 0em;
+    margin: 0.5em 0em 0em 0em;
     resize: none;
     outline: none;
     box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
     background-color: transparent;
+    padding: 0.5em 0.8em;
+    color: var(--text-secundary);
+    font-size: 1em;
+    font-weight: 300;
+    font-family: inter;
+}
+.pokemonPage-info_comments .formComments button{
+    width: 100%;
+    height: auto;
+    border: none;
+    border-radius: 8px;
+    font-size: 1em;
+    font-weight: 400;
+    margin: 0.8em 0em;
+    outline: none;
+    background-color: var(--button_default);
+    color: var(--text-dark_mode);
+    padding: 0.5em 0.8em;
+    cursor: pointer;
 }
 .pokemonPage-info_comments .container-comments{
     width: 100%;
@@ -144,3 +177,26 @@
     padding: 1em 0em;
     border: none;
 }
+.tabObservationPokemon-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    width: auto;
+    height: auto;
+    margin: 0rem 1rem 0.5rem 0rem;
+    padding: 0;
+}
+.tabObservationPokemon-container strong{
+    font-size: 0.9rem;
+    margin: 0 0 0 0.5em;
+    font-weight: 600;
+}
+.tabObservationPokemon-container p{
+    font-size: 0.9rem;
+    margin: 0;
+    font-weight: 500;
+    margin: 0 0 0 0.5em;
+    color: var(--text-secundary);
+}
+

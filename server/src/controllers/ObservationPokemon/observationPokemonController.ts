@@ -1,11 +1,12 @@
+import { ObservationPokemon } from "@prisma/client";
 import { createObservation,getAllObservation, getByIdObservation,getObservationsPokemonByPokemon, updateObservation, deleteObservation} from "../../services/observationPokemonServices";
 import { Request, Response } from "express";
 
 export const createObservationPokemonController = async (req: Request, res: Response) => {
     try {
-        const observationData = req.body;
+        const observationData: ObservationPokemon = req.body;
 
-        if (!observationData.masterId || !observationData.pokemonId || !observationData.description) {
+        if (!observationData.userId || !observationData.pokemonId || !observationData.description) {
             return res.status(400).json({
                 message: "Todos os campos devem ser preenchidos!"
             });

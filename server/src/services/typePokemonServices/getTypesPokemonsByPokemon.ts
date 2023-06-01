@@ -2,13 +2,13 @@ import { PrismaClient, TypePokemon } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
-export async function getTypesPokemonsByPokemon(pokemonId: number): Promise<TypePokemon[]> {
+export async function getTypesPokemonsByPokemon(namePokemon: string): Promise<TypePokemon[]> {
   try {
     const typesPokemons = await prisma.typePokemon.findMany({
       where: {
         pokemons: {
           some: {
-            id: pokemonId,
+            name: namePokemon,
           },
         },
       },

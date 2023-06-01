@@ -5,7 +5,7 @@ const pokemonRouter = Router();
 
 pokemonRouter.post("/pokemons", createrPokemonController);
 pokemonRouter.get("/pokemons", getAllPokemonsController);
-pokemonRouter.get("/pokemons/pokemon/:id ", getByIdPokemonController);
+pokemonRouter.get("/pokemons/:id", getByIdPokemonController);
 pokemonRouter.get("/types/:id/pokemons", getPokemonsByTypeController);
 pokemonRouter.get("/users/:id/pokemons", getPokemonsByUserController);
 pokemonRouter.put("/pokemons/:id", updatePokemonController);

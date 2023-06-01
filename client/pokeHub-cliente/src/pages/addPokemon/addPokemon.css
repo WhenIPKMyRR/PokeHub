@@ -1,0 +1,22 @@
+.addPokemon-tittle{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80px;
+    width: 100%;
+    margin: 0 ;
+    padding: 0;
+    font-size: 1.3em;
+    font-weight: 600;
+}
+.addPokemon-container{
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+    width: 100%;
+    margin: 0 ;
+    padding: 0;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+}

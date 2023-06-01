@@ -3,17 +3,16 @@
     height: 18px;
     border-radius: 6px;
     background-color: #5DADE2;
-    border: 2px solid #00000050 ;
+    border: 3px solid #00000050 ;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 0px 4px 0px 0px;
+    margin: 0px 6.5px 0px 0px;
     filter: grayscale(40%);
 }
 .tag-type_pokemon p{
     font-size: 9.5px;
-    font-weight: 300;
+    font-weight: 400;
     color: var(--text-dark_mode);
     text-transform: capitalize;
-    padding: 0.8em;
 }

@@ -12,16 +12,18 @@ datasource db {
 }
 
 model User {
-  id       Int    @id @default(autoincrement())
-  name     String
-  email    String @unique
-  password String
-  token    String
+  id        Int     @id @default(autoincrement())
+  firstName String
+  lastName  String
+  email     String  @unique
+  password  String
+  token     String  @default("")
+  isAdmin   Boolean @default(false)
+  avatar    String?
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  favorites    FavoritePokemon[]
   observations ObservationPokemon[]
   pokemons     Pokemon[]
 
@@ -29,20 +31,20 @@ model User {
 }
 
 model Pokemon {
-  id             Int    @id @default(autoincrement())
+  id             Int     @id @default(autoincrement())
   name           String
-  type           String
   image          String
   description    String
-  height         String
-  weight         String
+  color          String
+  height         Int
+  weight         Int
   baseExperience Int
   userId         Int
+  isFavorite     Boolean @default(false)
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  favorites    FavoritePokemon[]
   observations ObservationPokemon[]
   user         User                 @relation(fields: [userId], references: [id])
 
@@ -52,10 +54,8 @@ model Pokemon {
 }
 
 model TypePokemon {
-  id    Int    @id @default(autoincrement())
-  name  String
-  color String
-  
+  id   Int    @id @default(autoincrement())
+  name String
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -63,20 +63,6 @@ model TypePokemon {
   pokemons Pokemon[]
 
   @@map("typesPokemons")
-}
-
-model FavoritePokemon {
-  id        Int @id @default(autoincrement())
-  userId    Int
-  pokemonId Int
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  user    User    @relation(fields: [userId], references: [id])
-  pokemon Pokemon @relation(fields: [pokemonId], references: [id])
-
-  @@map("favoritesPokemons")
 }
 
 model ObservationPokemon {

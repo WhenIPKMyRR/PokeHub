@@ -1,31 +1,46 @@
-import { pokemonSchema } from "../../schemas/Pokemon/pokemonSchema";
-import { PrismaClient, Pokemon } from "@prisma/client";
+import { PrismaClient, Pokemon, TypePokemon } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
-export async function createPokemon(pokemonData: Pokemon) {
+export interface IPokemonPokeHub{
+  name: string;
+  image: string;
+  weight: number;
+  height: number;
+  userId: number;
+  baseExperience: number;
+  description: string;
+  isFavorite: boolean;
+  color: string;
+  types: TypePokemon[];
+}
+
+export async function createPokemon(pokemonData: IPokemonPokeHub) {
   try {
-    const validatedPokemon = pokemonSchema.parse(pokemonData);
-
     const createdPokemon = await prisma.pokemon.create({
-
       data: {
-        name: validatedPokemon.name,
-        type: validatedPokemon.type,
-        image: validatedPokemon.image,
-        description: validatedPokemon.description,
-        height: validatedPokemon.height,
-        weight: validatedPokemon.weight,
-        baseExperience: validatedPokemon.baseExperience,
-        userId: validatedPokemon.userId,
-      },
-      
+        name: pokemonData.name,
+        image: pokemonData.image,
+        weight: pokemonData.weight,
+        height: pokemonData.height,
+        userId: pokemonData.userId,
+        baseExperience: pokemonData.baseExperience,
+        description: pokemonData.description,
+        isFavorite: pokemonData.isFavorite,
+        color: pokemonData.color,
+        types: {
+          create: pokemonData.types.map((type) => ({
+            name: type.name,
+          })),
+        },
+      }
     });
 
     return createdPokemon;
-  }catch (error) {
+  } catch (error) {
     console.error("Erro na criação do pokemon", error);
     throw error;
   }
 }
+
 

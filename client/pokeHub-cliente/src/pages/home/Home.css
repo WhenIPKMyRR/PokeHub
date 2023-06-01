@@ -16,11 +16,20 @@
     font-weight: 500;
     margin: 0rem 0rem 0.85rem 0rem;
 }
+.last-add_Pokemon .linkTo,
+.favorites-Pokemon_linkTo{
+    width: 100%;
+    text-align: center;
+    font-size: 0.8rem;
+    font-weight: 500;
+    margin: 0rem 0rem 0.85rem 0rem;
+    text-decoration: underline;
+}
 .add-Pokemon{
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    width: 100%;
+    width: 10%;
     height: auto;
     bottom: 0;
     right: 0;

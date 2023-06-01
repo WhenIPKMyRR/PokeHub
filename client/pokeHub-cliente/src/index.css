@@ -77,4 +77,7 @@ button{
 
   /* usada para cor de textos secundários(mais apagados) no modo dark */
   --text-secundary-dark_mode: #a3a3a3;
+
+  /* usada para cor de botões */
+  --button_default: #DD655E;
 }

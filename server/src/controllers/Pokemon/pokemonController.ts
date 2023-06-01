@@ -5,7 +5,7 @@ export const createrPokemonController = async (req: Request, res: Response) => {
     try {
         const pokemonData = req.body;
 
-        if (!pokemonData.name || !pokemonData.type || !pokemonData.password) {
+        if (!pokemonData) {
             return res.status(400).json({
                 message: "Todos os campos devem ser preenchidos!"
             });

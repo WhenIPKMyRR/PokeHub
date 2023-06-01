@@ -18,8 +18,8 @@ export const ThemeContext = createContext({
 
 
 const App = () =>{
-  
-  const { user } = useAuth()
+
+  // const { user } = useAuth()
   const [theme, setTheme] = useContinuousState<DefaultTheme>('theme', lightTheme)
 
   const toggleTheme = () =>{
@@ -33,7 +33,7 @@ const App = () =>{
           <GlobalStyle/>
           <Header/>
           <Routies/>
-          { user && <Nav/>}
+          <Nav/>
         </ThemeProvider>
       </ThemeContext.Provider>
     </AuthProvider>

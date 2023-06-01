@@ -6,7 +6,7 @@ export async function getByIdPokemon(id: number): Promise<Pokemon | null>{
     try {
         const pokemon = await prisma.pokemon.findUnique({
           where: {
-            id,
+            id: id,
           },
         });
     

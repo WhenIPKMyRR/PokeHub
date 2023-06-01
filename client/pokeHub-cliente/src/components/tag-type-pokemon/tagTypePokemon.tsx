@@ -1,14 +1,23 @@
+import { getColorByType } from '../../services/getTypeColor';
 import './tagTypePokemon.css'
 
 interface ITagTypePokemonProps{
-    type: string;
+    name: string;
+    padding: string;
+    fontSize: string;
 }
 
-const TagTypePokemon: React.FC<ITagTypePokemonProps> = (props) =>{
+const TagTypePokemon: React.FC<ITagTypePokemonProps> = ({ name, padding, fontSize }) =>{
+    const color = getColorByType(name);
+    
     return(
-        <div className="tag-type_pokemon">
-            <p>
-                {props.type}
+        <div className="tag-type_pokemon" 
+            style={{ padding: padding,
+                    backgroundColor: color,
+            }}
+        >
+            <p style={{ fontSize: fontSize }}>
+                {name}
             </p>
         </div>
     );

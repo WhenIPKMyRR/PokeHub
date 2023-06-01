@@ -6,5 +6,7 @@ export interface IPokemonData{
     description: string;
     height: string;
     weight: string;
-    baseExperience: string;
+    baseExperience: number;
+    userId: number;
+    color: string;
 }

@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import Home from '../pages/home/home';
 import Favorites from '../pages/favorites/Favorites';
 import Search from '../pages/search/search';
@@ -7,6 +7,8 @@ import Caughts from '../pages/caughts/caughts';
 import Pokemon from '../pages/pokemon/pokemon';
 import Login from '../pages/login/login';
 import ProtectedLayout from '../components/protected-layout/protectedLayout';
+import AddPokemon from '../pages/addPokemon/addPokemon';
+import Teste from '../pages/teste/testePoekApi';
 
 const Routies = () => {
 
@@ -32,7 +34,7 @@ const Routies = () => {
           <User/>
         </ProtectedLayout>
       }/>
-      <Route path="/caughts/*" element={
+      <Route path="/caughts" element={
         <ProtectedLayout>
           <Caughts/>
         </ProtectedLayout>
@@ -40,6 +42,16 @@ const Routies = () => {
       <Route path="/pokemon/*" element={
         <ProtectedLayout>
           <Pokemon/>
+        </ProtectedLayout>
+      }/>
+      <Route path="/pokemons/*" element={
+        <ProtectedLayout>
+          <Teste/>
+        </ProtectedLayout>
+      }/>
+      <Route path="/add" element={
+        <ProtectedLayout>
+          <AddPokemon/>
         </ProtectedLayout>
       }/>
       <Route path="/signIn" element={

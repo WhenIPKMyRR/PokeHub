@@ -8,15 +8,17 @@ const secretKey = "WhenIParkMyRR";
 
 export async function createUser(userData: User) {
   try {
-    const validatedUser = userSchema.parse(userData);
-    const hashedPassword = await bcrypt.hash(validatedUser.password, 10);
+    const hashedPassword = await bcrypt.hash(userData.password, 10);
 
     const createdUser = await prisma.user.create({
       data: {
-        name: validatedUser.name,
-        email: validatedUser.email,
+        firstName: userData.firstName,
+        lastName: userData.lastName,
+        email: userData.email,
         password: hashedPassword,
-        token: "" // Definir um valor padrão para o campo "token"
+        token: "",
+        isAdmin: userData.isAdmin,
+        avatar: userData.avatar,
       },
     });
 

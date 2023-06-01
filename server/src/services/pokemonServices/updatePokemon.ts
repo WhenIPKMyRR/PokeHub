@@ -1,25 +1,31 @@
 import { pokemonSchema } from "../../schemas/Pokemon/pokemonSchema";
 import { PrismaClient, Pokemon } from "@prisma/client";
+import { IPokemonPokeApi } from "./createPokemon";
 
 const prisma = new PrismaClient();
 
-export async function updatePokemon(pokemonId: number, pokemonData: Pokemon) {
+export async function updatePokemon(pokemonId: number, pokemonData: IPokemonPokeApi) {
   try {
-    const validatedPokemon = pokemonSchema.parse(pokemonData);
 
     const updatePokemon =  await prisma.pokemon.update({
         where: {
             id: pokemonId
         },
         data: {
-            name: validatedPokemon.name,
-            type: validatedPokemon.type,
-            image: validatedPokemon.image,
-            description: validatedPokemon.description,
-            height: validatedPokemon.height,
-            weight: validatedPokemon.weight,
-            baseExperience: validatedPokemon.baseExperience,
-            userId: validatedPokemon.userId
+          name: pokemonData.name,
+          image: pokemonData.image,
+          weight: pokemonData.weight,
+          height: pokemonData.height,
+          userId: pokemonData.userId,
+          baseExperience: pokemonData.baseExperience,
+          description: pokemonData.description,
+          types: {
+            create: {
+              name: pokemonData.types.name,
+            }
+          },
+          isFavorite: pokemonData.isFavorite,
+  
         }
     })
 

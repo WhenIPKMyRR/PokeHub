@@ -6,7 +6,7 @@ const typePokemonRouter = Router();
 typePokemonRouter.post("/types", createTypePokemonController);
 typePokemonRouter.get("/types", getAllTypesPokemonsController);
 typePokemonRouter.get("/types/:id", getByIdTypePokemonController);
-typePokemonRouter.get("/pokemons/:id/types", getTypesPokemonsByPokemonController);
+typePokemonRouter.get("/pokemons/:name/types", getTypesPokemonsByPokemonController);
 typePokemonRouter.put("/types/:id", updateTypePokemonController);
 typePokemonRouter.delete("/types/:id", deleteTypePokemonController);
 
