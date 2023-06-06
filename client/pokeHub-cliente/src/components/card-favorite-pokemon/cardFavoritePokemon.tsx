@@ -1,3 +1,4 @@
+import { useParams } from 'react-router';
 import { IFavoritePokemonData } from '../../interfaces/IFavoritePokemonData';
 import { getColorByType } from '../../services/getTypeColor';
 import { getTypeByPokemonData } from '../../utils/useTypePokemonData';
@@ -7,12 +8,17 @@ import './cardFavoritePokemon.css'
 
 
 const CardFavoritePokemon: React.FC<IFavoritePokemonData> = ({ pokemonId, pokemonName, pokemonImage }) => {
+
+    const params = useParams();
+    const currentPokemon = params["*"] as string;
+
+
     const { typeByPokemonData, isLoadingByType, isErrorByType } = getTypeByPokemonData(pokemonName)
     
 
     return (
         <div className="cardFavoritePokemon-container"
-            style={{ backgroundColor:typeByPokemonData?.slice(0,0).map((type) => getColorByType(type.name)) }}
+            style={{ backgroundColor: typeByPokemonData?.slice(0,1).map((type) => getColorByType(type?.name)) }}
         >
             <div className="cardFavoritePokemon-header">
                 <span>
@@ -21,7 +27,8 @@ const CardFavoritePokemon: React.FC<IFavoritePokemonData> = ({ pokemonId, pokemo
                             <TagTypePokemon 
                             name={type.name} 
                             fontSize="0.7em"
-                            padding="0em 0.5em"
+                            padding="0.5em 0.35em"
+                            margin="0em 0.18em 0em 0em"
                             />
                         )})
                     }

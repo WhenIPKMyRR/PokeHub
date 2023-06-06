@@ -7,10 +7,13 @@ export const getObservationsPokemonByPokemon  = async (pokemonId: number) => {
         const observationsPokemon = await prisma.observationPokemon.findMany({
             where: {
                pokemon:{
-                    
                     id: pokemonId
                }
-              },
+            },
+            include: {
+                user: true,
+                pokemon: true
+            }
         })
         return observationsPokemon
     } catch (error) {

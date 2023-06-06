@@ -7,9 +7,8 @@ input{
     font-size: 18px;
     outline: none;
     box-sizing: border-box;
-    margin: 1rem 0rem;
+    /* margin: 1rem 0rem; */
     background-color: var(--component_background);
-    color: var(--text);
     font-weight: 500;
     transition: all 0.3s ease;
     box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
@@ -19,7 +18,11 @@ input{
     background-size: 30px;
 }
 input::placeholder{
-    color: var(--text-component);
     font-weight: 500;
-
 }
+input:focus{
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgb(0 0 0 / 20%) 0px 0px 0px 4px;
+}
+
+
+

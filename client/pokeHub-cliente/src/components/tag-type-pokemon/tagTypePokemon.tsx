@@ -5,15 +5,17 @@ interface ITagTypePokemonProps{
     name: string;
     padding: string;
     fontSize: string;
+    margin?: string;
 }
 
-const TagTypePokemon: React.FC<ITagTypePokemonProps> = ({ name, padding, fontSize }) =>{
+const TagTypePokemon: React.FC<ITagTypePokemonProps> = ({ name, padding, fontSize, margin }) =>{
     const color = getColorByType(name);
     
     return(
         <div className="tag-type_pokemon" 
             style={{ padding: padding,
                     backgroundColor: color,
+                    margin: margin
             }}
         >
             <p style={{ fontSize: fontSize }}>

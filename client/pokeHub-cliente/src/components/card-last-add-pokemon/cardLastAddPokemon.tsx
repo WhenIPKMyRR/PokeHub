@@ -7,7 +7,7 @@ export type ICardLastAddPokemon = {
     name: string;
     image: string;
     description: string;
-    rota?: number;
+    rota?: string;
 }
 
 const CardLastAddPokemon: React.FC<ICardLastAddPokemon> = ({ name, image, description, rota }) =>{
@@ -22,7 +22,7 @@ const CardLastAddPokemon: React.FC<ICardLastAddPokemon> = ({ name, image, descri
                     {description}
                 </p>
                 <Link to={`/pokemon/${rota}`}>
-                    <GenericButton text={"Conferir"} width={"127px"} height={"35px"} margin={"0em 0em 1em 0em"}/>
+                    <GenericButton text={"Conferir"} width={"127px"} height={"35px"} margin={"0em 0em 0.8em 0em"}/>
                 </Link>
             </div>
             <div className='cardLastAddPokemon-image'>

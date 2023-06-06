@@ -1,0 +1,41 @@
+.caughtsPokemons-header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: auto;
+    width: 100%;
+    margin: 0;
+    padding: 1em 0em;
+}
+.caughtsPokemons-header svg{
+    height: 2.1em;
+    width: 2.1em;
+    margin: 0 0.5em 0 0;
+    padding: 0;
+}
+.caughtsPokemons-header h1{
+    margin: 0;
+    padding: 0;
+    font-size: 1.2em;
+    font-weight: 600;
+}
+.caughtsPokemons-container_cards{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    width: 100%;
+    margin: 1em 0em ;
+    padding: 0;
+}
+.caughtsPokemons-container_cards a{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 205px;
+    width: 100%;
+    margin: 10px 0px ;
+    padding: 0;
+}

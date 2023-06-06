@@ -1,32 +1,44 @@
-import { useQueryClient, useQuery } from "react-query";
+import { useQueryClient, useQuery, QueryClient } from "react-query";
 import { useParams } from "react-router";
-import { IPokemonData } from "../interfaces/IPokemonData";
+import { IPokemonPokeHubData } from "../interfaces/IPokemonData";
 import { PokeHubApi } from "./api";
+import { queryClient } from "./queryClient";
 
 
-export const useCurrentPokemonData = () => {
-  const queryClient = useQueryClient();
-  const params = useParams();
-  const currentPokemon = params["*"] as string;
+export const useCurrentPokemonData = (currentPokemon: string) => {
 
   const { data: pokemon, isLoading: isLoadingPokemon } = useQuery<
-  
-    IPokemonData,Error>(
-
-    ["pokemons", currentPokemon],
+  IPokemonPokeHubData,
+    Error
+  >(
+    ['pokemons', currentPokemon],
     async () => {
       const response = await PokeHubApi.get(`pokemons/${currentPokemon}`);
       return response.data?.data;
     },
-    {
-      initialData: () => {
-        return queryClient
-          .getQueryData<IPokemonData[]>("pokemons")
-          ?.find((pokemon) => pokemon.id === Number(currentPokemon));
-      },
-    }
   );
 
-  return { pokemon, isLoadingPokemon } ;
+  return { pokemon, isLoadingPokemon };
+};
+
+export const updateCurrentPokemon = async (id?: number, data?: any) => {
+  try {
+    await PokeHubApi.put(`pokemons/${id}`, data);
+    queryClient?.invalidateQueries(['pokemons', id]);
+    console.log("Pokémon atualizado com sucesso!");
+  } catch (error) {
+    console.log("Erro ao atualizar o Pokémon:", error);
+  }
   
 };
+
+
+export const deleteCurrentPokemon = async (id?: number) =>{
+
+  try {
+    await PokeHubApi.delete(`pokemons/${id}`);
+  } catch (error) {
+    console.log("Erro ao deletar o Pokémon:", error);
+  }
+
+}

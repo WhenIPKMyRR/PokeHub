@@ -1,15 +1,17 @@
-html{
+*{
   margin: 0px;
   padding: 0%;
   box-sizing: border-box;
   font-family: 'Inter', sans-serif !important;
   scroll-behavior: smooth;
+  position: relative;
 }
 body{
   transition: background-color 0.5s;
   margin: 0px;
   padding: 0px;
   margin-bottom: 5em;
+  position: relative;
 }
 main{
   width: 100%;

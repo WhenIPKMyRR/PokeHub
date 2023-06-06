@@ -1,18 +1,18 @@
 .cardNewPokemon-container{
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 1fr 2fr 1fr;
+    grid-template-rows: 1fr 3fr 1fr;
     width: 125px;
     height: 190px;
     border-radius: 8px;
-    /* background-color: #e4aca6 ; */
-    padding: 0.3em;
     background-image: url('../../assets/images/background-card-newPokemon.png');
     background-repeat: no-repeat;
     background-size: 110%;
     background-position: 50px -50px;
     box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
     margin-right: 20px;
+    padding:  0.3em 0.5em;
+
 }
 .cardNewPokemon-type{
     grid-row-start: 1;
@@ -29,8 +29,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 125px;
-    height: auto ;
+    width: 100%;
+    height: 100% ;
 }
 .cardNewPokemon-image_container{
     width: 95%;
@@ -49,19 +49,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 125px;
-    height: auto;
-    border-radius: 0 0 8px 8px;
-}
-.cardNewPokemon-text{
-    display: flex;
-    justify-content: center;
-    align-items: center;
     width: 100%;
     height: 100%;
+    border-radius: 0 0 8px 8px;
 }
 .cardNewPokemon-text p{
-    font-size: 18px;
+    font-size: 1em;
     font-weight: 500;
     color: var(--text-dark_mode);
     text-transform: capitalize;

@@ -72,12 +72,12 @@ export const fetchPokemonDescription = async (currentPokemon: string) => {
       .get(`https://pokeapi.co/api/v2/pokemon-species/${currentPokemon}`)
       .then((response) => {
         const flavorTextEntries = response.data?.flavor_text_entries;
-        const ptbrEntry = flavorTextEntries.find(
+        const enEntry = flavorTextEntries.find(
           (entry: any) => entry.language.name === "en"
         );
 
-        if (ptbrEntry) {
-          resolve(ptbrEntry.flavor_text);
+        if (enEntry) {
+          resolve(enEntry.flavor_text);
         } else {
           reject(new Error("Descrição em pt-br não encontrada"));
         }
@@ -108,11 +108,31 @@ export const useCurrentPokemonDataPokeApi = () => {
   const params = useParams();
   const currentPokemon = params["*"] as string;
 
+  const getPokemonDescription = async () => {
+    try {
+      const description = await fetchPokemonDescription(currentPokemon);
+      return description;
+    } catch (error) {
+      console.log("Erro ao obter a descrição do Pokémon:", error);
+      return "";
+    }
+  };
+
+  const getPokemonColor = async () => {
+    try {
+      const color = await fetchPokemonColor(currentPokemon);
+      return color;
+    } catch (error) {
+      console.log("Erro ao obter a cor do Pokémon:", error);
+      return "";
+    }
+  };
+
   const { data: pokemonPokeApi, isLoading: isLoadingPokemon } = useQuery<IPokemonData, Error>(
     ["pokemonPokeApi", currentPokemon],
     async () => {
       const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${currentPokemon}`);
-      console.log(currentPokemon)
+      console.log(currentPokemon);
       return response.data;
     },
     {
@@ -124,6 +144,23 @@ export const useCurrentPokemonDataPokeApi = () => {
     }
   );
 
-  return { pokemonPokeApi, isLoadingPokemon };
+  const { data: description, isLoading: isLoadingDescription } = useQuery<string, Error>(
+    ["pokemonDescription", currentPokemon],
+    getPokemonDescription
+  );
+
+  const { data: color, isLoading: isLoadingColor } = useQuery<string, Error>(
+    ["pokemonColor", currentPokemon],
+    getPokemonColor
+  );
+
+  return {
+    pokemonPokeApi,
+    isLoadingPokemon,
+    description,
+    isLoadingDescription,
+    color,
+    isLoadingColor,
+  };
 };
 

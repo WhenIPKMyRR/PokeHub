@@ -25,14 +25,14 @@
     margin: 0rem 0rem 0.85rem 0rem;
     text-decoration: underline;
 }
-.add-Pokemon{
+.add-Pokemon {
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    width: 10%;
+    width: auto;
     height: auto;
     bottom: 0;
     right: 0;
-    padding: 5.5em 0.5em;
+    padding: 0em 0.5em 5.5em 0em;
     position: fixed;
-}
+  }

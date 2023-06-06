@@ -1,10 +1,40 @@
+.pokemonPage-header{
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1em 0em;
+}
+.pokemonPage-header_buttonBackPage{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    border: none;
+}
+.pokemonPage-header svg {
+    width: 2em;
+    height: 2em;
+    cursor: pointer;
+    margin: 0em;
+    color: var(--text-dark_mode);
+}
+.pokemonPage-header h1{
+    font-size: 1em;
+    font-weight: 500;
+    margin: 0em;
+    padding: 0em;
+    text-transform: capitalize;
+    text-align: center;
+}
 .pokemonPage-image{
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100%;
     height: auto;
-    padding: 2.8em 0em;
     object-fit: cover;
     border-radius: 8px;
     box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
@@ -15,12 +45,34 @@
     background-position: center;
     background-color: var(--component_background);
     background-color: #ffffff;
-    margin: 1.7rem 0rem 0.5rem 0rem;
+    margin: 0.5rem 0rem;
+    padding: 0rem 0rem 1.5rem 0rem;
+}
+.pokemonPage-image_favPokemon{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    background-color: transparent;
+    padding: 0.5em 0.5em;
+}
+.pokemonPage-image_favPokemon .favoriteButtonHeart{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    padding: 0;
+    width: 2.5em;
+    height: 2.5em;
+}
+.favoriteButtonHeart svg{
+    width: 100%;
+    height: 100%;
 }
 .pokemonPage-image img{
-    width: 90%;
+    width: 85%;
     height: auto;
-    object-fit: cover;
     border-radius: 8px;
     filter: drop-shadow(4px 3px 2px #1c1c1ec4);
 }
@@ -134,7 +186,7 @@
 
 }
 .pokemonPage-info_comments .formComments textarea{
-    width: 94%;
+    width: 100%;
     height: 100%;
     min-height: 100px;
     max-height: 200px;

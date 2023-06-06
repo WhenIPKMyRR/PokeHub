@@ -1,4 +1,4 @@
-import { createPokemon, getAllPokemons, getByIdPokemon, getPokemonsByType, getPokemonsByUser, updatePokemon, deletePokemon} from '../../services/pokemonServices'
+import { createPokemon, getAllPokemons, getByIdPokemon, getByNamePokemon, getPokemonsByType, getPokemonsByUser, updatePokemon, deletePokemon} from '../../services/pokemonServices'
 import { Request, Response } from "express";
 
 export const createrPokemonController = async (req: Request, res: Response) => {
@@ -86,9 +86,31 @@ export const getByIdPokemonController = async (req: Request, res: Response) => {
     }
 }
 
+export const getByNamePokemonController = async (req: Request, res: Response) => {
+    try {
+        const { name } = req.params;
+        const pokemon = await getByNamePokemon(name)
+        if(pokemon){
+            res.status(200).json({
+                message: "Pokemon encontrado com sucesso!",
+                data: pokemon
+            });
+        }else{
+            res.status(404).json({
+                message: "Pokemon não encontrado!",
+            });
+        }
+    } catch(error){
+        res.status(500).json({
+            message: "Erro interno do servidor!",
+            error
+        });
+    }
+}
+
 export const getPokemonsByTypeController = async (req: Request, res: Response) => {
     try {
-        const { type } = req.query;
+        const { type } = req.params;
 
         const pokemons = await getPokemonsByType(type as string);
 
@@ -181,21 +203,21 @@ export const deletePokemonController = async (req: Request, res: Response) => {
     try {
         const { id } = req.params;
 
-        const pokemonId = parseInt(id); 
+        const pokemonID = parseInt(id); 
 
-        if (isNaN(pokemonId)) {
+        if (isNaN(pokemonID)) {
             res.status(400).json({
                 message: "ID inválido! O ID deve ser um número.",
             });
             return;
         }
 
-        const deletedPokemon = await deletePokemon(pokemonId)
+        const pokemon = await deletePokemon(pokemonID)
 
-        if(deletedPokemon){
+        if(pokemon){
             res.status(200).json({
                 message: "Pokemon deletado com sucesso!",
-                data: deletedPokemon
+                data: pokemon
             });
         }else{
             res.status(404).json({

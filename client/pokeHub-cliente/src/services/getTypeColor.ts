@@ -1,6 +1,5 @@
-type PokemonType = 'normal' | 'fire' | 'water' | 'electric' | 'grass' | 'ice' | 'fighting' | 'poison' | 'ground' | 'flying' | 'psychic' | 'bug' | 'rock' | 'ghost' | 'dragon' | 'steel' | 'fairy' | 'dark';
 
-export const getColorByType = (type: PokemonType): string => {
+export const getColorByType = (type: string): string => {
   switch (type) {
     case 'normal':
       return '#A8A878';

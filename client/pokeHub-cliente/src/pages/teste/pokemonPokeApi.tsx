@@ -1,19 +1,14 @@
-import TagTypePokemon from "../../components/tag-type-pokemon/tagTypePokemon";
 import ReactLoading from "react-loading";
 import { ContainerGlobal } from "../../styles/globalStyle";
-import { IPokemonData, createPokemonByPokeApi, fetchPokemonColor, fetchPokemonDescription, useCurrentPokemonDataPokeApi } from "../../utils/usePokeApiData";
+import { IPokemonData, createPokemonByPokeApi, useCurrentPokemonDataPokeApi } from "../../utils/usePokeApiData";
 import { useMutation } from "react-query";
-import { useParams } from "react-router";
-import { getTypeByPokemonData } from "../../utils/useTypePokemonData";
-
+import TagTypePokemon from "../../components/tag-type-pokemon/tagTypePokemon";
+import './pokemonPokeApi.css'
 
 interface ITabObservationPokemonProps {
     type: string;
-    value: number;
+    value?: string;
 }
-
-
-
 
 const TabObservationPokemons: React.FC<ITabObservationPokemonProps> = ({ type,value }) => {
 
@@ -40,33 +35,31 @@ const TabObservationPokemons: React.FC<ITabObservationPokemonProps> = ({ type,va
 
   
 const Teste = () =>{
-    const { pokemonPokeApi, isLoadingPokemon } = useCurrentPokemonDataPokeApi();    
-    const { typeByPokemonData, isLoadingByType, isErrorByType } = getTypeByPokemonData(pokemonPokeApi?.name)
+
+    // const { typeByPokemonData, isLoadingByType, isErrorByType } = getTypeByPokemonData()
+    const { pokemonPokeApi, isLoadingPokemon, description, isLoadingDescription, color, isLoadingColor } = useCurrentPokemonDataPokeApi()
     
     const createPokemonMutation = useMutation(createPokemonByPokeApi);
-
-    const params = useParams();
-    const currentPokemon = params["*"] as string;
     
-    async function handleCreatePokemon(pokemonTo: IPokemonData | undefined) {
+    async function handleCreatePokemon(pokemonPokeApi: IPokemonData) {
+        
+        const types = pokemonPokeApi?.types.map((type) => ({ name: type.type.name }));
 
-        if (pokemonTo) {
-          const description = await fetchPokemonDescription(currentPokemon);
-          const color = await fetchPokemonColor(currentPokemon);
-          const types = pokemonTo.types.map((type) => ({ name: type.type.name }));
+        if (pokemonPokeApi) {
       
           const pokemonData = {
-            name: pokemonTo.name,
-            image: pokemonTo.sprites.other["official-artwork"].front_default,
+            name: pokemonPokeApi.name,
+            image: pokemonPokeApi.sprites.other["official-artwork"].front_default,
             types: types,
-            weight: pokemonTo.weight,
-            height: pokemonTo.height,
-            userId: 3,
-            baseExperience: pokemonTo.base_experience,
+            weight: pokemonPokeApi.weight,
+            height: pokemonPokeApi.height,
+            userId: 5,
+            baseExperience: pokemonPokeApi.base_experience,
             description: description,
             color: color
           };
-      
+
+
           try {
             await createPokemonMutation.mutateAsync(pokemonData);
             console.log("Novo Pokemon criado");
@@ -108,19 +101,17 @@ const Teste = () =>{
                         />
                         </span>
                     )}
-                    {typeByPokemonData?.map((type) => {
-                        return(
-                            <span className="pokemonPage-info_header tag-pokemon">
+                    <span className="pokemonPage-info_header tag-pokemon">
+                        {pokemonPokeApi?.types.slice(0, 3).map((type) => {
+                            return(
                                 <TagTypePokemon 
-                                    name={type.name} 
+                                    name={type.type.name} 
                                     fontSize="0.9em"
-                                    padding="0.2em 5em"
-                                    color={"#A8D8EA"}
+                                    padding="0.8em 1em"
                                 />
-                            </span>
-                        )
-                    })
-                    }
+                            )
+                        })}
+                    </span>
                     {pokemonPokeApi && (
                         <p className="pokemonPage-info_header id-pokemon">
                             {pokemonPokeApi.id}
@@ -140,29 +131,35 @@ const Teste = () =>{
                     )}
                     {pokemonPokeApi && (
                         <div key={pokemonPokeApi.name}>
-                        <h1>{pokemonPokeApi.name}</h1>
-                        <p>{pokemonPokeApi.name}</p>
+                            <h1>{pokemonPokeApi.name}</h1>
+                            <p>{description}</p>
                         </div>
                     )}
                     </div>
                     <div className="pokemonPage-info_observations">
-                    <h2>Caracteristicas</h2>
-                    <div className="pokemonPage-info_observations container-observations">
-                        <TabObservationPokemons
-                        type="Altura"
-                        value={pokemonPokeApi.height}
-                        />
-                        <TabObservationPokemons
-                        type="Peso"
-                        value={pokemonPokeApi.weight}
-                        />
-                        <TabObservationPokemons
-                        type="Nível experiência"
-                        value={pokemonPokeApi.base_experience}
-                        />
+                        <h2>Caracteristicas</h2>
+                        <div className="pokemonPage-info_observations container-observations">
+                            <TabObservationPokemons
+                            type="Altura"
+                            value={pokemonPokeApi.height.toString()}
+                            />
+                            <TabObservationPokemons
+                            type="Peso"
+                            value={pokemonPokeApi.weight.toString()}
+                            />
+                            <TabObservationPokemons
+                            type="Nível experiência"
+                            value={pokemonPokeApi.base_experience.toString()}
+                            />
+                            <TabObservationPokemons
+                                type="Coloração"
+                                value={color}
+                            />
+                        </div>
                     </div>
+                    <div className="pokemonPokeApi-addPokemon">
+                        <button type="submit" onClick={()=> handleCreatePokemon(pokemonPokeApi)}>Capturar {pokemonPokeApi.name}</button>
                     </div>
-                    <button type="submit" onClick={()=> handleCreatePokemon(pokemonPokeApi)}>Enviar</button>
                 </div>
                 </ContainerGlobal>
             </main>

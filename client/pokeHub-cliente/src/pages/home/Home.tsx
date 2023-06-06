@@ -1,11 +1,8 @@
-import CardFavoritePokemon from '../../components/card-favorite-pokemon-home/cardFavoritePokemonHome';
 import CardLastAddPokemon from '../../components/card-last-add-pokemon/cardLastAddPokemon';
 import CardNewPokemon from '../../components/card-new-pokemon/cardNewPokemon';
 import Carousel from '../../components/carousel/carousel';
 import CategoryHome from '../../components/category-pokemon-home/categoryPokemonHome';
 import  { ContainerGlobal }  from '../../styles/globalStyle';
-import './home.css';
-
 import imageCategoryFantasma from '../../assets/images/fantasma-image-category-pokemon.png'
 import imageCategoryFogo from '../../assets/images/fogo-image-category-pokemon.png'
 import imageCategoryAgua from '../../assets/images/agua-image-category-pokemon.png'
@@ -16,9 +13,12 @@ import imageCategoryEletrico from '../../assets/images/eletrico-image-category-p
 import ButtonAddPokemon from '../../components/button-add-pokemon/buttonAddPokemon';
 import CardFavoritePokemonHome from '../../components/card-favorite-pokemon-home/cardFavoritePokemonHome';
 import { Link } from 'react-router-dom';
-import { useAllPokemons, usePokemon } from '../../utils/usePokeApiData';
-import ReactLoading from 'react-loading';
+import { useAllPokemons } from '../../utils/usePokeApiData';
 import { usePokemonData } from '../../utils/usePokemonData';
+import IsErrorModal from '../../components/isErrorModal/isErrorModal';
+import IsLoadingModal from '../../components/isLoadingModal/isLoadingModal';
+import './home.css';
+
 
 
 export default function Home() {
@@ -34,13 +34,13 @@ export default function Home() {
                   <h1 className='new_Pokemon title'>
                      Novidades
                   </h1>
-                  {isError && <h1>Erro ao carregar os pokemons</h1>}
-                  {isLoading && <ReactLoading type='spin' color='#DD655E'/>}
+                  {isError && <IsErrorModal/>}
+                  {isLoading && <IsLoadingModal/>}
                   <Carousel settingsResponsive={{
-                     0: { items: 2.2 },
+                     0: { items: 2.5 },
                      1024: { items: 8}
                   }}>
-                     {pokemons?.reverse().slice(0, 8).map(pokemon => (
+                     {pokemons?.slice(0, 12).map(pokemon => (
                         <Link to={`/pokemon/${pokemon.name}`} key={pokemon.name}>
                            <CardNewPokemon pokemon={pokemon} />
                         </Link>
@@ -52,21 +52,21 @@ export default function Home() {
                         0: { items: 4 },
                         1024: { items: 10}
                   }}>
-                     <CategoryHome image={imageCategoryFantasma} name='Fantasma'/>
-                     <CategoryHome image={imageCategoryFogo} name='Fogo'/>
-                     <CategoryHome image={imageCategoryAgua} name='Água'/>
-                     <CategoryHome image={imageCategoryPsiquico} name='Psiquico'/>
-                     <CategoryHome image={imageCategoryNormal} name='Normal'/>
-                     <CategoryHome image={imageCategoryInseto} name='Inseto'/>
-                     <CategoryHome image={imageCategoryEletrico} name='Elétrico'/>
+                     <CategoryHome image={imageCategoryFantasma} name='Fantasma' rota='/search/type/ghost'/>
+                     <CategoryHome image={imageCategoryFogo} name='Fogo' rota='/search/type/fire'/>
+                     <CategoryHome image={imageCategoryAgua} name='Água' rota='/search/type/water'/>
+                     <CategoryHome image={imageCategoryPsiquico} name='Psiquico' rota='/search/type/psychic'/>
+                     <CategoryHome image={imageCategoryNormal} name='Normal' rota='/search/type/normal'/>
+                     <CategoryHome image={imageCategoryInseto} name='Inseto' rota='/search/type/bug'/>
+                     <CategoryHome image={imageCategoryEletrico} name='Elétrico' rota='/search/type/eletric'/>
                      <span style={{
                         display: 'flex',
                         flexDirection: 'column',
                         justifyContent: 'center',
                         alignItems: 'center',
-                        width: '100%',
+                        width: '90%',
                         height: '100%',
-                        padding:'1.15em 0.30em'
+                        padding:'0.5em 0em'
                      }}>
                         <ButtonAddPokemon route={'/search'} svgIcon={
                            <svg width="40" height="40" fill="none" stroke="#f5f5f5" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -76,7 +76,7 @@ export default function Home() {
                         <p style={{
                            fontSize: '0.90em',
                            fontWeight: '500',
-                           marginTop: '0.45em'
+                           marginTop: '0.8em'
                         }}>
                            Ver mais
                         </p>
@@ -88,9 +88,9 @@ export default function Home() {
                      Ultimos adicionados
                   </h1>
                   {/* {isErrorPokeHub && <h1>Erro ao carregar os pokemons</h1>} */}
-                  {isLoadingPokeHub && <ReactLoading/>}
+                  {isLoadingPokeHub && <IsLoadingModal/>}
                   {pokemonsPokeHub?.reverse().slice(0, 4).map(pokemonPokeHub => (
-                     <CardLastAddPokemon key={pokemonPokeHub.id} image={pokemonPokeHub.image} name={pokemonPokeHub.name} description={pokemonPokeHub.description} rota={pokemonPokeHub.id}/>
+                     <CardLastAddPokemon key={pokemonPokeHub.id} image={pokemonPokeHub.image} name={pokemonPokeHub.name} description={pokemonPokeHub.description} rota={pokemonPokeHub.name}/>
                   ))}
                   <span className='last-add_Pokemon linkTo'>
                      <Link to={'/caughts'}>
@@ -105,9 +105,11 @@ export default function Home() {
                      Seus favoritos
                   </h1>
                      {/* {isErrorPokeHub && <h1>Erro ao carregar os pokemons</h1>} */}
-                     {isLoadingPokeHub && <ReactLoading/>}
-                     {pokemonsPokeHub?.reverse().slice(0, 4).map(pokemonPokeHub => (
-                        <CardFavoritePokemonHome key={pokemonPokeHub.id} image={pokemonPokeHub.image} name={pokemonPokeHub.name} description={pokemonPokeHub.description} rota={pokemonPokeHub.id}/>
+                     {isLoadingPokeHub && <IsLoadingModal/>}
+                     {pokemonsPokeHub?.filter(
+                            (pokemon) => pokemon.isFavorite === true 
+                        ).map((pokemon) => (
+                        <CardFavoritePokemonHome key={pokemon.id} image={pokemon.image} name={pokemon.name} description={pokemon.description} rota={pokemon.name}/>
                      ))}
                       <span className='favorites-Pokemon_linkTo' >
                         <Link to={'/favorites'}>

@@ -5,6 +5,9 @@ export const GlobalStyle = createGlobalStyle`
     background-color: ${props => props.theme.colors.background};
     color: ${props => props.theme.colors.text};
   }
+  nav{
+    background-color: ${props => props.theme.colors.background};
+  }
 `;
 
 export const ContainerGlobal = styled.div`

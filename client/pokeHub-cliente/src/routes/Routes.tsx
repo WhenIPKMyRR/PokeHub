@@ -8,7 +8,8 @@ import Pokemon from '../pages/pokemon/pokemon';
 import Login from '../pages/login/login';
 import ProtectedLayout from '../components/protected-layout/protectedLayout';
 import AddPokemon from '../pages/addPokemon/addPokemon';
-import Teste from '../pages/teste/testePoekApi';
+import Teste from '../pages/teste/pokemonPokeApi';
+import CategoryPokemon from '../pages/categoryPokemon/categoryPokemon';
 
 const Routies = () => {
 
@@ -47,6 +48,11 @@ const Routies = () => {
       <Route path="/pokemons/*" element={
         <ProtectedLayout>
           <Teste/>
+        </ProtectedLayout>
+      }/>
+      <Route path="search/type/*" element={
+        <ProtectedLayout>
+          <CategoryPokemon/>
         </ProtectedLayout>
       }/>
       <Route path="/add" element={

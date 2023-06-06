@@ -6,12 +6,13 @@
     width: auto;
     height: auto;
     padding: 1em 1rem 1rem 0rem;
+    margin: 0.5em 0em;
     width: 100px;
     height: 100px;
 }
 .categoryPokemonHome-container img{
     width: auto;
-    height: 80%;
+    height: 4.5rem;
     filter: drop-shadow(2px 3px 2px #1c1c1e6f);
 }
 .categoryPokemonHome-container p{

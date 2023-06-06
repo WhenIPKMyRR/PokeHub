@@ -1,5 +1,4 @@
 import React,{useState, useEffect} from 'react'
-import axios from 'axios'
 import GenericButton from '../generic-button/genericButton';
 import './cardFavoritePokemonHome.css'
 import { Link } from 'react-router-dom';
@@ -8,7 +7,7 @@ interface ICardFavoritePokemonHomeHome{
     name: string;
     image: string;
     description: string;
-    rota?: number;
+    rota?: string;
 }
 
 const cardFavoritePokemonHomeHome: React.FC<ICardFavoritePokemonHomeHome> = ({ name, image, description, rota}) =>{
@@ -24,7 +23,7 @@ const cardFavoritePokemonHomeHome: React.FC<ICardFavoritePokemonHomeHome> = ({ n
                         {description}
                     </p>
                     <Link to={`/pokemon/${rota}`}>
-                        <GenericButton text={"Conferir"} width={"127px"} height={"35px"} margin={"0em 0em 1em 0em"}/>
+                        <GenericButton text={"Conferir"} width={"127px"} height={"35px"} margin={"0em 0em 0.8em 0em"}/>
                     </Link>
                 </div>
                 <div className='cardFavoritePokemonHome-image'>

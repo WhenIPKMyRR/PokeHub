@@ -1,7 +1,12 @@
-export interface IPokemonData{
+export interface IPokemonPokeHubData{
     id?: number;
     name: string;
-    type: string;
+    types: [
+        type:{
+            id: number;
+            name: string;
+        }
+    ];
     image: string;
     description: string;
     height: string;
@@ -9,4 +14,29 @@ export interface IPokemonData{
     baseExperience: number;
     userId: number;
     color: string;
+    observations:[
+        observation:{
+            id: number;
+            description: string;
+            userId: number;
+            pokemonId: number;
+            user:{
+                id: number;
+                firstName: string;
+                lastName: string;
+                avatar: string;
+            }
+            
+        }
+    ]
+    users:[
+        user:{
+            id: number;
+            firstName: string;
+            lastName: string;
+            email: string;
+            avatar: string;
+        }
+    ]
+    isFavorite: boolean
 }

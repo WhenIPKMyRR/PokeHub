@@ -28,8 +28,7 @@ const CardNewPokemon: React.FC<ICardNewPokemonProps> = ({ pokemon }) =>{
                 <TagTypePokemon 
                   name={type.type.name} 
                   fontSize="0.7em"
-                  padding="0em 0.5em"
-                  color={"#A8D8EA"}
+                  padding="0.5em 0.35em"
                 />
               )})
             }

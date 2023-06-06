@@ -7,8 +7,12 @@ export async function deletePokemon(id: number) {
 
     const deletedPokemon = await prisma.pokemon.delete({
         where: {
-            id: id
-        }
+          id: id
+        },
+        include: {
+          types: true, 
+          observations: true
+        },
     });
 
     return deletedPokemon;

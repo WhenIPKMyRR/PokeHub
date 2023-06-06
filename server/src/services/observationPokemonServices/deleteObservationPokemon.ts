@@ -6,7 +6,7 @@ export async function deleteObservation(id: number) {
   try {
     const deletedObservation = await prisma.observationPokemon.delete({
         where: {
-            id: id
+          id: id
         }
     });
 
