@@ -1,15 +1,15 @@
 import { Routes, Route } from 'react-router-dom';
-import Home from '../pages/home/home';
-import Favorites from '../pages/favorites/Favorites';
-import Search from '../pages/search/search';
-import User from '../pages/user/user';
-import Caughts from '../pages/caughts/caughts';
-import Pokemon from '../pages/pokemon/pokemon';
-import Login from '../pages/login/login';
-import ProtectedLayout from '../components/protected-layout/protectedLayout';
-import AddPokemon from '../pages/addPokemon/addPokemon';
-import Teste from '../pages/teste/pokemonPokeApi';
-import CategoryPokemon from '../pages/categoryPokemon/categoryPokemon';
+import Home from '../pages/Home';
+import Favorites from '../pages/FavoritesPokemons';
+import Search from '../pages/SearchPokemons';
+import User from '../pages/User/Index';
+import Caughts from '../pages/CaughtsPokemons';
+import Pokemon from '../pages/PokemonMainPagePokeAPI';
+import Login from '../pages/Login';
+import ProtectedLayout from '../components/ProtectedLayout';
+import AddPokemon from '../pages/AddPokemon';
+import Teste from '../pages/PokemonMainPagePokeHubAPi';
+import CategoryPokemon from '../pages/CategoryPokemon';
 
 const Routies = () => {
 

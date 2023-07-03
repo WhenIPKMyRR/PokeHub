@@ -12,6 +12,7 @@ body{
   padding: 0px;
   margin-bottom: 5em;
   position: relative;
+  box-sizing: border-box;
 }
 main{
   width: 100%;
@@ -82,4 +83,7 @@ button{
 
   /* usada para cor de botões */
   --button_default: #DD655E;
+
+  --rainbow-gradient: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
+
 }
