@@ -30,47 +30,31 @@
 
 <ol>
   <li>Clone o repositório para sua máquina local:</li>
-
   <pre><code>git clone https://github.com/Brokollis/PokeHub.git</code></pre>
   <hr>
   <li>Navegue até o diretório da API:</li>
-
   <pre><code>cd server</code></pre>
-
   <hr>
-
   <li>Instale as dependências:</li>
-
   <pre><code>npm install</code></pre>
-
   <hr>
-
   <li>Configure o banco de dados MySQL:</li>
-  
+  <hr> 
   <li>Execute as migrações do banco de dados:</li>
-
   <pre><code>npx prisma migrate dev</code></pre>
   <hr>
-
-
   <li>Inicie a API:</li>
-
   <pre><code>npm run dev</code></pre>
-
-
+  <hr>
   <li>Em outra janela do terminal, navegue até o diretório do front-end:</li>
-
   <pre><code>client\pokeHub-cliente> </code></pre>
-
-
+  <hr>
   <li>Instale as dependências:</li>
-
   <pre><code>npm install</code></pre>
-
-
+  <hr>
   <li>Inicie o aplicativo de front-end:</li>
-
   <pre><code>npm run dev</code></pre>
+  <hr>
 </ol>
 
 <p>A aplicação estará disponível em <a href="http://localhost:5173">http://localhost:5173</a></p>
