@@ -90,7 +90,7 @@
 
 | Imagem 1 | Imagem 2 | Imagem 3 | Imagem 4 |
 |---|---|---|---|
-| ![Imagem 1](caminho/para/imagem1.png) | ![Imagem 2](caminho/para/imagem2.png) | ![Imagem 3](caminho/para/imagem3.png) | ![Imagem 4](caminho/para/imagem4.png) |
+| ![Imagem 1](client/pokeHub-cliente/src/assets/prototypes/initial-screen.jpg) | ![Imagem 2](client/pokeHub-cliente/src/assets/prototypes/pokemon-screen.jpg) | ![Imagem 3](client/pokeHub-cliente/src/assets/prototypes/search-screen.jpg) | ![Imagem 4](client/pokeHub-cliente/src/assets/prototypes/favorites-screens.jpg) |
 
 <p>O protótipo estático fornece uma visão geral das telas e componentes da aplicação, permitindo ter uma ideia de como será a aparência e a estrutura do PokeHub.</p>
 
