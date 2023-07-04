@@ -32,23 +32,25 @@
   <li>Clone o repositório para sua máquina local:</li>
 
   <pre><code>git clone https://github.com/Brokollis/PokeHub.git</code></pre>
-
-
+  <hr>
   <li>Navegue até o diretório da API:</li>
 
   <pre><code>cd server</code></pre>
 
+  <hr>
 
   <li>Instale as dependências:</li>
 
   <pre><code>npm install</code></pre>
 
+  <hr>
 
   <li>Configure o banco de dados MySQL:</li>
   
   <li>Execute as migrações do banco de dados:</li>
 
   <pre><code>npx prisma migrate dev</code></pre>
+  <hr>
 
 
   <li>Inicie a API:</li>
@@ -87,13 +89,13 @@
   <li>Axios - Biblioteca para fazer requisições HTTP.</li>
 </ul>
 
-🎨 Layout
+<h2>🎨 Layout</h2>
 
-O prototipo do PokeHub foi desenvolvido seguindo boas práticas de design de interface e experiência do usuário. Abaixo está um anexo com o protótipo estático da aplicação, que mostra como a interface visual foi planejada.
+<p>O prototipo do PokeHub foi desenvolvido seguindo boas práticas de design de interface e experiência do usuário. Abaixo está um anexo com o protótipo estático da aplicação, que mostra como a interface visual foi planejada.</p>
 
-Anexo:  <a href="https://www.figma.com/file/GPAL4WPMGcPxTzu3oqZyWU/Untitled?type=design&mode=design&t=7eNkgbxDSHQfKoI8-1">Protótipo Estático - PokeHub</a>
+<p>Anexo:  <a href="https://www.figma.com/file/GPAL4WPMGcPxTzu3oqZyWU/Untitled?type=design&mode=design&t=7eNkgbxDSHQfKoI8-1">Protótipo Estático - PokeHub</a></p>
 
-O protótipo estático fornece uma visão geral das telas e componentes da aplicação, permitindo ter uma ideia de como será a aparência e a estrutura do PokeHub.
+<p>O protótipo estático fornece uma visão geral das telas e componentes da aplicação, permitindo ter uma ideia de como será a aparência e a estrutura do PokeHub.</p>
 
 <h2>📌 Versão</h2>
 
