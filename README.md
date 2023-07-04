@@ -90,11 +90,11 @@
 <p>Anexo:  <a href="https://www.figma.com/file/GPAL4WPMGcPxTzu3oqZyWU/Untitled?type=design&mode=design&t=7eNkgbxDSHQfKoI8-1">Protótipo Estático - PokeHub</a></p>
 
 
-| Imagem 1  |  Imagem 2  |  Imagem 3  |  Imagem 4 |
+| Tela Inicial  |  Tela Pokemon  |  Tela Pesquisa  |  Tela Favoritos |
 |--- | --- | --- | ---|
 | ![Imagem 1](client/pokeHub-cliente/src/assets/prototypes/initial-screen.jpg) | ![Imagem 2](client/pokeHub-cliente/src/assets/prototypes/pokemon-screen.jpg) | ![Imagem 3](client/pokeHub-cliente/src/assets/prototypes/search-screen.jpg) | ![Imagem 4](client/pokeHub-cliente/src/assets/prototypes/favorites-screens.jpg) |
 
-<p>As imagens acima são capturas de tela, onde mostra algumas das telas da aplicação rodando.</p>
+<p>As imagens acima são capturas de tela, onde mostram algumas das telas da aplicação rodando.</p>
 
 <h2>📌 Versão</h2>
 
