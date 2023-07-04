@@ -100,4 +100,4 @@
 
 <h2>🚧 Em construção</h2>
 
-<p>PokeHub ainda está em desenvolvimento e algumas funcionalidades podem estar indisponíveis ou incompletas. Estamos trabalhando duro para finalizar o projeto o mais rápido possível e entregar a melhor experiência aos usuários. Agradecemos sua compreensão e paciência enquanto trabalhamos para concluir a aplicação.</p>
+<p>PokeHub ainda está em desenvolvimento e algumas funcionalidades podem estar indisponíveis ou incompletas. Estou trabalhando duro para finalizar o projeto o mais rápido possível e entregar a melhor experiência aos usuários. Logo estarei disponibilizando o link da aplicação após realizar o deploy. Agradeço sua compreensão e paciência!!</p>
