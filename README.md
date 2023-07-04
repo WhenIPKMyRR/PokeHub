@@ -30,9 +30,9 @@
 
 <ol>
   <li>Clone o repositório para sua máquina local:</li>
+  <br>
   <pre><code>git clone https://github.com/Brokollis/PokeHub.git</code></pre>
   <hr>
-  <br>
   <li>Navegue até o diretório da API:</li>
   <pre><code>cd server</code></pre>
   <hr>
