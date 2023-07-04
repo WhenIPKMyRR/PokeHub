@@ -54,7 +54,7 @@
   <hr>
   <li>Em outra janela do terminal, navegue até o diretório do front-end:</li>
   <br>
-  <pre><code>client\pokeHub-cliente> </code></pre>
+  <pre><code>client\pokeHub-cliente </code></pre>
   <hr>
   <li>Instale as dependências:</li>
   <br>
